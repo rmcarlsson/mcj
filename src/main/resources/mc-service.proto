@@ -1,0 +1,99 @@
+
+syntax = "proto3";
+
+package grpcproto;
+
+
+option java_multiple_files = true;
+option java_package = "se.trantor.grpcproto";
+option java_outer_classname = "HelloWorldProto";
+
+import "google/protobuf/empty.proto";
+
+service McServer {
+
+	rpc LoadBrewProfile (LoadBrewProfileRequest) returns (SuccessReply) {}
+	rpc StartStopAbort (StartStopRequest) returns (SuccessReply) {}
+	rpc GrainsAdded (GrainsAddedNotify) returns (google.protobuf.Empty) {}
+
+	rpc SpargeDone (SpargeDoneNotify) returns (google.protobuf.Empty) {}
+	rpc GetStatus (google.protobuf.Empty) returns (BrewStatusReply) {}
+}
+
+message NetworkDiscoveryRequest {
+	string name = 1;
+}
+
+
+message NetworkDiscoveryReply {
+	string name = 1;
+}
+
+message GrainsAddedNotify {
+	int32 id = 1;
+}
+
+message SpargeDoneNotify {
+	int32 id = 1;
+}
+
+message SuccessReply {
+
+	enum Success {
+		OK = 0;
+		FALIED = 1;
+	}
+	Success success = 1;
+	string msg = 2;
+}
+
+message MashProfileStep {
+	int32 temperature = 1;
+	int32 time = 2;
+}
+
+enum BrewStep {
+	IDLE = 0;
+	HEATING = 1;
+	STRIKE_WATER_TEMP_REACHED = 2;
+	MASHING = 3;
+	MASH_DONE_START_SPARGE = 4;
+	BOILING = 5;
+	ADD_HOPS = 6;
+	BOIL_DONE = 7;
+}
+
+message HopAdditionStep {
+	int32 time = 1;
+	string name = 2;
+}
+
+message BrewStatusReply {
+	BrewStep current_brew_step = 1;
+	repeated MashProfileStep remaining_mash_steps = 2;
+	double mash_temperature = 3;
+	double mash_temperature_setpoint = 4;
+	repeated HopAdditionStep remaining_hop_additions = 5;
+	int32 remaining_boil_time = 6;
+
+}
+
+message LoadBrewProfileRequest {
+
+	repeated MashProfileStep mash_profile_steps = 1;
+	repeated HopAdditionStep hop_addition_step = 2;
+	int32 boil_time = 3;
+}
+
+
+
+message StartStopRequest {
+
+	enum StartStop {
+		START = 0;
+		STOP = 1;
+		ABORT = 2;
+	}
+	StartStop start_stop = 1;
+}
+
