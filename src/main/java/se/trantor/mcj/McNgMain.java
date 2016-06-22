@@ -216,8 +216,7 @@ public class McNgMain {
 			if(bc != null)
 			{
 				BrewStatus bs = bc.getStatus();
-				MashControlStateE state = bc.GetState();
-
+				
 				Iterator<MashStep> i = bs.currentMashProfile.iterator();
 				Builder bsr = BrewStatusReply.newBuilder();				
 				while(i.hasNext())
@@ -228,24 +227,24 @@ public class McNgMain {
 							.setTime(ms.Time)
 							.build());
 				}
+				
+				bsr.setRemainingBoilTime(bs.boilTime);
 
 				bsr.setMashTemperature(bs.currentMashTemp).setMashTemperatureSetpoint(bs.currentMashSetPoint);
 				switch(bs.state)
 				{
-				case MASH_DONE:
-					bsr.setCurrentBrewStep(BrewStep.MASH_DONE_START_SPARGE);
-					break;
-				case HEATING:
-					bsr.setCurrentBrewStep(BrewStep.HEATING);
-					break;
-				case HEATING_TO_STRIKE_WATER:
-					bsr.setCurrentBrewStep(BrewStep.HEATING);
-					break;
 				case INIT:
 					bsr.setCurrentBrewStep(BrewStep.IDLE);
 					break;
+				case HEATING:
+				case HEATING_TO_STRIKE_WATER:
+					bsr.setCurrentBrewStep(BrewStep.HEATING);
+					break;
 				case MASHING:
 					bsr.setCurrentBrewStep(BrewStep.MASHING);
+					break;
+				case MASH_DONE:
+					bsr.setCurrentBrewStep(BrewStep.MASH_DONE_START_SPARGE);
 					break;
 				case WAIT_FOR_GRAINS:
 					bsr.setCurrentBrewStep(BrewStep.STRIKE_WATER_TEMP_REACHED);

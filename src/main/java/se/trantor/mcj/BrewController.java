@@ -74,7 +74,13 @@ public class BrewController implements Runnable{
 
 		Temperature t = TemperatureSingleton.getInstance();
 		ret.currentMashTemp = t.GetTemperature();
+		if (state == stateE.BOILING)
+			ret.boilTime = bc.getBoilTime();
+		
+		if (state == stateE.MASHING)
+			ret.currentMashProfile = msc.GetCurrentMashProfileStatus();
 
+		
 		ret.state = GetState();
 
 		return ret;
