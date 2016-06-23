@@ -24,7 +24,6 @@ public class Heater implements Runnable {
 		return power;
 	}
 
-	@Override
 	public void run() {
 
 		logger.log(Level.INFO, "Spawning heater");

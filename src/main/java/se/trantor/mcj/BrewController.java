@@ -31,38 +31,32 @@ public class BrewController implements Runnable{
 	}
 
 
-	@Override
 	public void run() {
-		state = stateE.MASHING;
-		msc = new MashStepControl(mashProfile);
-		Thread tMc = new Thread(msc);
-		tMc.start();		
+		Thread tMc = null;
+		Thread tBc = null;
 		try {
+			state = stateE.MASHING;
+			msc = new MashStepControl(mashProfile);
+			tMc = new Thread(msc);
+			tMc.start();		
+
 			tMc.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			tMc.interrupt();
-			return;
-		}
 
-		waitForSpargeDoneNotification();
+			waitForSpargeDoneNotification();
 
-		if(Thread.currentThread().isInterrupted())
-		{
-			state = stateE.DONE;
-			return;
-		}
+			state = stateE.BOILING;
+			bc = new BoilController(hopAdditions, boilTime);
+			tBc = new Thread(bc);
+			tBc.start();
 
-		state = stateE.BOILING;
-		bc = new BoilController(hopAdditions, boilTime);
-		Thread tBc = new Thread(bc);
-		tBc.start();
-
-		try {
 			tBc.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			tBc.interrupt();
+			if (tBc != null)
+				tBc.interrupt();
+			if (tMc != null)
+				tMc.interrupt();
+			state = stateE.DONE;
 		}
 		state = stateE.DONE;
 
@@ -76,11 +70,11 @@ public class BrewController implements Runnable{
 		ret.currentMashTemp = t.GetTemperature();
 		if (state == stateE.BOILING)
 			ret.boilTime = bc.getBoilTime();
-		
+
 		if (state == stateE.MASHING)
 			ret.currentMashProfile = msc.GetCurrentMashProfileStatus();
 
-		
+
 		ret.state = GetState();
 
 		return ret;
@@ -139,7 +133,7 @@ public class BrewController implements Runnable{
 
 		else
 			return MashControlStateE.DONE;
-	
+
 	}
 
 
