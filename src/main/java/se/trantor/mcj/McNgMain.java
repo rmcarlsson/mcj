@@ -211,12 +211,22 @@ public class McNgMain {
 		}
 
 		@java.lang.Override
+		public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
+				io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+
+			bc.WortChillerSanitiedDoneNotify();
+
+			Empty reply = Empty.newBuilder().build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();		
+		}
+		
+		@java.lang.Override
 		public void getStatus(com.google.protobuf.Empty request,
 				io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver) {
 			if(bc != null)
 			{
 				BrewStatus bs = bc.getStatus();
-				
 				Iterator<MashStep> i = bs.currentMashProfile.iterator();
 				Builder bsr = BrewStatusReply.newBuilder();				
 				while(i.hasNext())
@@ -229,6 +239,8 @@ public class McNgMain {
 				}
 				
 				bsr.setRemainingBoilTime(bs.boilTime);
+				
+				bsr.setProgress(bs.progress);
 
 				bsr.setMashTemperature(bs.currentMashTemp).setMashTemperatureSetpoint(bs.currentMashSetPoint);
 				switch(bs.state)
@@ -252,10 +264,12 @@ public class McNgMain {
 				case BOILING:
 					bsr.setCurrentBrewStep(BrewStep.BOILING);
 					break;
-				case DONE:
+				case BOIL_DONE:
 					bsr.setCurrentBrewStep(BrewStep.BOIL_DONE);
 					break;
-
+				case DONE:
+					bsr.setCurrentBrewStep(BrewStep.IDLE);
+					break;
 				default:
 					break;
 

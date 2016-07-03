@@ -62,12 +62,12 @@ public  final class StartStopRequest extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_StartStopRequest_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_StartStopRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_StartStopRequest_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_StartStopRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.StartStopRequest.class, se.trantor.grpcproto.StartStopRequest.Builder.class);
   }
@@ -300,12 +300,12 @@ public  final class StartStopRequest extends
       se.trantor.grpcproto.StartStopRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_StartStopRequest_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_StartStopRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_StartStopRequest_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_StartStopRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.StartStopRequest.class, se.trantor.grpcproto.StartStopRequest.Builder.class);
     }
@@ -333,7 +333,7 @@ public  final class StartStopRequest extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_StartStopRequest_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_StartStopRequest_descriptor;
     }
 
     public se.trantor.grpcproto.StartStopRequest getDefaultInstanceForType() {

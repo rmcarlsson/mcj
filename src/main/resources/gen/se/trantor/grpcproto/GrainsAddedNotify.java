@@ -61,12 +61,12 @@ public  final class GrainsAddedNotify extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_GrainsAddedNotify_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_GrainsAddedNotify_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_GrainsAddedNotify_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_GrainsAddedNotify_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.GrainsAddedNotify.class, se.trantor.grpcproto.GrainsAddedNotify.Builder.class);
   }
@@ -191,12 +191,12 @@ public  final class GrainsAddedNotify extends
       se.trantor.grpcproto.GrainsAddedNotifyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_GrainsAddedNotify_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_GrainsAddedNotify_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_GrainsAddedNotify_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_GrainsAddedNotify_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.GrainsAddedNotify.class, se.trantor.grpcproto.GrainsAddedNotify.Builder.class);
     }
@@ -224,7 +224,7 @@ public  final class GrainsAddedNotify extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_GrainsAddedNotify_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_GrainsAddedNotify_descriptor;
     }
 
     public se.trantor.grpcproto.GrainsAddedNotify getDefaultInstanceForType() {

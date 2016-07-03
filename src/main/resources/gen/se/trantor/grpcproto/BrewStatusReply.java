@@ -21,6 +21,7 @@ public  final class BrewStatusReply extends
     mashTemperatureSetpoint_ = 0D;
     remainingHopAdditions_ = java.util.Collections.emptyList();
     remainingBoilTime_ = 0;
+    progress_ = 0;
   }
 
   @java.lang.Override
@@ -84,6 +85,11 @@ public  final class BrewStatusReply extends
             remainingBoilTime_ = input.readInt32();
             break;
           }
+          case 56: {
+
+            progress_ = input.readInt32();
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -104,12 +110,12 @@ public  final class BrewStatusReply extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_BrewStatusReply_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_BrewStatusReply_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.BrewStatusReply.class, se.trantor.grpcproto.BrewStatusReply.Builder.class);
   }
@@ -228,6 +234,15 @@ public  final class BrewStatusReply extends
     return remainingBoilTime_;
   }
 
+  public static final int PROGRESS_FIELD_NUMBER = 7;
+  private int progress_;
+  /**
+   * <code>optional int32 progress = 7;</code>
+   */
+  public int getProgress() {
+    return progress_;
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -257,6 +272,9 @@ public  final class BrewStatusReply extends
     }
     if (remainingBoilTime_ != 0) {
       output.writeInt32(6, remainingBoilTime_);
+    }
+    if (progress_ != 0) {
+      output.writeInt32(7, progress_);
     }
   }
 
@@ -288,6 +306,10 @@ public  final class BrewStatusReply extends
     if (remainingBoilTime_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(6, remainingBoilTime_);
+    }
+    if (progress_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(7, progress_);
     }
     memoizedSize = size;
     return size;
@@ -374,12 +396,12 @@ public  final class BrewStatusReply extends
       se.trantor.grpcproto.BrewStatusReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_BrewStatusReply_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_BrewStatusReply_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.BrewStatusReply.class, se.trantor.grpcproto.BrewStatusReply.Builder.class);
     }
@@ -422,12 +444,14 @@ public  final class BrewStatusReply extends
       }
       remainingBoilTime_ = 0;
 
+      progress_ = 0;
+
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_BrewStatusReply_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_descriptor;
     }
 
     public se.trantor.grpcproto.BrewStatusReply getDefaultInstanceForType() {
@@ -468,6 +492,7 @@ public  final class BrewStatusReply extends
         result.remainingHopAdditions_ = remainingHopAdditionsBuilder_.build();
       }
       result.remainingBoilTime_ = remainingBoilTime_;
+      result.progress_ = progress_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -547,6 +572,9 @@ public  final class BrewStatusReply extends
       }
       if (other.getRemainingBoilTime() != 0) {
         setRemainingBoilTime(other.getRemainingBoilTime());
+      }
+      if (other.getProgress() != 0) {
+        setProgress(other.getProgress());
       }
       onChanged();
       return this;
@@ -1173,6 +1201,32 @@ public  final class BrewStatusReply extends
     public Builder clearRemainingBoilTime() {
       
       remainingBoilTime_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int progress_ ;
+    /**
+     * <code>optional int32 progress = 7;</code>
+     */
+    public int getProgress() {
+      return progress_;
+    }
+    /**
+     * <code>optional int32 progress = 7;</code>
+     */
+    public Builder setProgress(int value) {
+      
+      progress_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional int32 progress = 7;</code>
+     */
+    public Builder clearProgress() {
+      
+      progress_ = 0;
       onChanged();
       return this;
     }

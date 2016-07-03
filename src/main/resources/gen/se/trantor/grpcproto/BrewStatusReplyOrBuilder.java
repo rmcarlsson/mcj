@@ -78,4 +78,9 @@ public interface BrewStatusReplyOrBuilder extends
    * <code>optional int32 remaining_boil_time = 6;</code>
    */
   int getRemainingBoilTime();
+
+  /**
+   * <code>optional int32 progress = 7;</code>
+   */
+  int getProgress();
 }

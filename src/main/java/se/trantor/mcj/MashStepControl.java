@@ -17,7 +17,7 @@ import se.trantor.mcj.MashStepControl.MashControlStateE;
 public class MashStepControl implements Runnable {
 
 	public enum MashControlStateE {
-		INIT, WAIT_FOR_GRAINS, MASHING, HEATING, MASH_DONE, HEATING_TO_STRIKE_WATER, BOILING, DONE;
+		INIT, WAIT_FOR_GRAINS, MASHING, HEATING, MASH_DONE, HEATING_TO_STRIKE_WATER, BOILING, BOIL_DONE, DONE;
 	}
 	private ArrayList<MashStep> mashStepProfile;
 	private int stepIx;

@@ -13,5 +13,6 @@ public class BrewStatus {
 	public ArrayList<HopAddition> currentHopAdditions = new ArrayList<HopAddition>();
 	public int boilTime = 0;
 	public MashControlStateE state;
+	public int progress = 0;
 
 }

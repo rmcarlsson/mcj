@@ -1,6 +1,8 @@
 package se.trantor.mcj;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +21,8 @@ public class BrewController implements Runnable{
 
 	private enum stateE { MASHING, BOILING, DONE; }
 
-	private stateE state = stateE.MASHING; 
+	private stateE state = stateE.MASHING;
+	private int totalProcessTime = 0; 
 
 	public BrewController(ArrayList<MashStep> aMashProfile, 
 			ArrayList<HopAddition> aHopAdditionList, 
@@ -34,22 +37,26 @@ public class BrewController implements Runnable{
 	public void run() {
 		Thread tMc = null;
 		Thread tBc = null;
+		totalProcessTime  = calculateTotalBrewProcessTime();
 		try {
-			state = stateE.MASHING;
-			msc = new MashStepControl(mashProfile);
-			tMc = new Thread(msc);
-			tMc.start();		
+			if (!mashProfile.isEmpty())
+			{
+				state = stateE.MASHING;
+			
+				msc = new MashStepControl(mashProfile);
+				tMc = new Thread(msc);
+				tMc.start();		
+				tMc.join();
 
-			tMc.join();
-
-			waitForSpargeDoneNotification();
-
+				waitForSpargeDoneNotification();
+			}
+			
 			state = stateE.BOILING;
 			bc = new BoilController(hopAdditions, boilTime);
 			tBc = new Thread(bc);
 			tBc.start();
-
 			tBc.join();
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			if (tBc != null)
@@ -62,21 +69,51 @@ public class BrewController implements Runnable{
 
 	}
 
+	private int calculateTotalBrewProcessTime() {
+		int ret = 0;
+		
+		for (int i=0; i < mashProfile.size(); i++)
+		{	
+			ret += mashProfile.get(i).Time;
+		}
+		
+		ret += boilTime;
+		
+		// TODO Auto-generated method stub
+		return ret;
+	}
+
+
 	public BrewStatus getStatus()
 	{	
+		int totalTimeRemaining = 0;
 		BrewStatus ret = new BrewStatus();
 
 		Temperature t = TemperatureSingleton.getInstance();
 		ret.currentMashTemp = t.GetTemperature();
 		if (state == stateE.BOILING)
 			ret.boilTime = bc.getBoilTime();
+		else
+			ret.boilTime = boilTime;
 
 		if (state == stateE.MASHING)
+		{
 			ret.currentMashProfile = msc.GetCurrentMashProfileStatus();
-
-
+			for (int i=0; i < ret.currentMashProfile.size(); i++)
+			{	
+				totalTimeRemaining += ret.currentMashProfile.get(i).Time;
+			}
+		}	
+		totalTimeRemaining += ret.boilTime;
+		
 		ret.state = GetState();
-
+		if (ret.state != MashControlStateE.DONE )
+		{
+			ret.progress = ((totalProcessTime - totalTimeRemaining) * 100) / totalProcessTime;
+		}
+		else
+			ret.progress = 0;
+		
 		return ret;
 
 	}
@@ -86,18 +123,24 @@ public class BrewController implements Runnable{
 		{
 			try {
 				this.wait();
-			} catch (InterruptedException e) {
-				return;
-
-			}
+			} catch (InterruptedException e) {}
 		}
+		logger.log(Level.INFO, "Sparge done notification");
 	}
 
 	public synchronized void SpargeDoneNotify()
 	{
-		logger.log(Level.INFO, "Sparge done notification");
 		spargeDone = true;
 		notify();
+	}
+	
+	public synchronized void WortChillerSanitiedDoneNotify()
+	{
+		if (bc != null)
+		{
+			logger.log(Level.INFO, "Wort chiller sanitized done notification");
+			bc.SetWortChillerSanitized();
+		}
 	}
 
 	public ArrayList<MashStep> GetCurrentMashProfile() {
@@ -130,7 +173,6 @@ public class BrewController implements Runnable{
 		{
 			return bc.GetState();
 		}
-
 		else
 			return MashControlStateE.DONE;
 

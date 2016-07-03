@@ -25,7 +25,7 @@ public class NetworkDiscoveryThread implements Runnable {
 			socket.setBroadcast(true);
 
 			while (true) {
-				logger.log(Level.INFO, "Ready to receive broadcast packets");
+				logger.log(Level.FINE, "Ready to receive broadcast packets");
 
 				// Receive a packet
 				byte[] buffer = new byte[15000];
@@ -38,8 +38,8 @@ public class NetworkDiscoveryThread implements Runnable {
 				}
 				
 				// Packet received
-				logger.log(Level.INFO, "Discovery packet received from: {0} ", packet.getAddress().getHostAddress());
-				logger.log(Level.INFO, "Packet received; data: {0}", new String(packet.getData()));
+				logger.log(Level.FINE, "Discovery packet received from: {0} ", packet.getAddress().getHostAddress());
+				logger.log(Level.FINE, "Packet received; data: {0}", new String(packet.getData()));
 
 				//InputStream aInput = new ByteArrayInputStream(bytes);
 				NetworkDiscoveryRequest request = NetworkDiscoveryRequest.parseFrom(bytes);
@@ -57,7 +57,7 @@ public class NetworkDiscoveryThread implements Runnable {
 							packet.getPort());
 					socket.send(sendPacket);
 
-					logger.log(Level.INFO, "Sent packet to: {0}", sendPacket.getAddress().getHostAddress());
+					logger.log(Level.FINE, "Sent packet to: {0}", sendPacket.getAddress().getHostAddress());
 				}
 			}
 		} catch (

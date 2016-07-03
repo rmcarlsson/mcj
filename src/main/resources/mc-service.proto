@@ -6,7 +6,7 @@ package grpcproto;
 
 option java_multiple_files = true;
 option java_package = "se.trantor.grpcproto";
-option java_outer_classname = "HelloWorldProto";
+option java_outer_classname = "GrainbrainProto";
 
 import "google/protobuf/empty.proto";
 
@@ -17,6 +17,7 @@ service McServer {
 	rpc GrainsAdded (GrainsAddedNotify) returns (google.protobuf.Empty) {}
 
 	rpc SpargeDone (SpargeDoneNotify) returns (google.protobuf.Empty) {}
+	rpc WortChillerSanitizedDone (WortChillerSanitizedDoneNotify) returns (google.protobuf.Empty) {}
 	rpc GetStatus (google.protobuf.Empty) returns (BrewStatusReply) {}
 }
 
@@ -34,6 +35,10 @@ message GrainsAddedNotify {
 }
 
 message SpargeDoneNotify {
+	int32 id = 1;
+}
+
+message WortChillerSanitizedDoneNotify {
 	int32 id = 1;
 }
 
@@ -59,8 +64,7 @@ enum BrewStep {
 	MASHING = 3;
 	MASH_DONE_START_SPARGE = 4;
 	BOILING = 5;
-	ADD_HOPS = 6;
-	BOIL_DONE = 7;
+	BOIL_DONE = 6;
 }
 
 message HopAdditionStep {
@@ -75,7 +79,7 @@ message BrewStatusReply {
 	double mash_temperature_setpoint = 4;
 	repeated HopAdditionStep remaining_hop_additions = 5;
 	int32 remaining_boil_time = 6;
-
+	int32 progress = 7;
 }
 
 message LoadBrewProfileRequest {

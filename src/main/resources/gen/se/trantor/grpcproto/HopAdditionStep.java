@@ -68,12 +68,12 @@ public  final class HopAdditionStep extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_HopAdditionStep_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_HopAdditionStep_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_HopAdditionStep_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_HopAdditionStep_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.HopAdditionStep.class, se.trantor.grpcproto.HopAdditionStep.Builder.class);
   }
@@ -238,12 +238,12 @@ public  final class HopAdditionStep extends
       se.trantor.grpcproto.HopAdditionStepOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_HopAdditionStep_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_HopAdditionStep_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_HopAdditionStep_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_HopAdditionStep_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.HopAdditionStep.class, se.trantor.grpcproto.HopAdditionStep.Builder.class);
     }
@@ -273,7 +273,7 @@ public  final class HopAdditionStep extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_HopAdditionStep_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_HopAdditionStep_descriptor;
     }
 
     public se.trantor.grpcproto.HopAdditionStep getDefaultInstanceForType() {

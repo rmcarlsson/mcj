@@ -85,12 +85,12 @@ public  final class LoadBrewProfileRequest extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.LoadBrewProfileRequest.class, se.trantor.grpcproto.LoadBrewProfileRequest.Builder.class);
   }
@@ -300,12 +300,12 @@ public  final class LoadBrewProfileRequest extends
       se.trantor.grpcproto.LoadBrewProfileRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.LoadBrewProfileRequest.class, se.trantor.grpcproto.LoadBrewProfileRequest.Builder.class);
     }
@@ -347,7 +347,7 @@ public  final class LoadBrewProfileRequest extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
     }
 
     public se.trantor.grpcproto.LoadBrewProfileRequest getDefaultInstanceForType() {

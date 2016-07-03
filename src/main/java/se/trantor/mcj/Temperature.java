@@ -27,7 +27,7 @@ public class Temperature {
 		if (temperature > 101)
 			temperature = 101;
 		
-		logger.log(Level.INFO, "Temperature is {0}", temperature);
+		logger.log(Level.FINE, "Temperature is {0}", temperature);
 		return temperature;
 	}
 

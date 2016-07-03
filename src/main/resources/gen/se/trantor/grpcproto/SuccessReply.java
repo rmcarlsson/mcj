@@ -69,12 +69,12 @@ public  final class SuccessReply extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SuccessReply_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SuccessReply_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SuccessReply_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SuccessReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.SuccessReply.class, se.trantor.grpcproto.SuccessReply.Builder.class);
   }
@@ -338,12 +338,12 @@ public  final class SuccessReply extends
       se.trantor.grpcproto.SuccessReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SuccessReply_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SuccessReply_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SuccessReply_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SuccessReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.SuccessReply.class, se.trantor.grpcproto.SuccessReply.Builder.class);
     }
@@ -373,7 +373,7 @@ public  final class SuccessReply extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SuccessReply_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SuccessReply_descriptor;
     }
 
     public se.trantor.grpcproto.SuccessReply getDefaultInstanceForType() {

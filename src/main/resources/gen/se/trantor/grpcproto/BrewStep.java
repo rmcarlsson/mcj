@@ -33,13 +33,9 @@ public enum BrewStep
    */
   BOILING(5, 5),
   /**
-   * <code>ADD_HOPS = 6;</code>
+   * <code>BOIL_DONE = 6;</code>
    */
-  ADD_HOPS(6, 6),
-  /**
-   * <code>BOIL_DONE = 7;</code>
-   */
-  BOIL_DONE(7, 7),
+  BOIL_DONE(6, 6),
   UNRECOGNIZED(-1, -1),
   ;
 
@@ -68,13 +64,9 @@ public enum BrewStep
    */
   public static final int BOILING_VALUE = 5;
   /**
-   * <code>ADD_HOPS = 6;</code>
+   * <code>BOIL_DONE = 6;</code>
    */
-  public static final int ADD_HOPS_VALUE = 6;
-  /**
-   * <code>BOIL_DONE = 7;</code>
-   */
-  public static final int BOIL_DONE_VALUE = 7;
+  public static final int BOIL_DONE_VALUE = 6;
 
 
   public final int getNumber() {
@@ -93,8 +85,7 @@ public enum BrewStep
       case 3: return MASHING;
       case 4: return MASH_DONE_START_SPARGE;
       case 5: return BOILING;
-      case 6: return ADD_HOPS;
-      case 7: return BOIL_DONE;
+      case 6: return BOIL_DONE;
       default: return null;
     }
   }
@@ -121,7 +112,7 @@ public enum BrewStep
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.getDescriptor()
+    return se.trantor.grpcproto.GrainbrainProto.getDescriptor()
         .getEnumTypes().get(0);
   }
 

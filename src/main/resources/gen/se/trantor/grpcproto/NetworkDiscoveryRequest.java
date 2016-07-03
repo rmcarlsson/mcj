@@ -62,12 +62,12 @@ public  final class NetworkDiscoveryRequest extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.NetworkDiscoveryRequest.class, se.trantor.grpcproto.NetworkDiscoveryRequest.Builder.class);
   }
@@ -216,12 +216,12 @@ public  final class NetworkDiscoveryRequest extends
       se.trantor.grpcproto.NetworkDiscoveryRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.NetworkDiscoveryRequest.class, se.trantor.grpcproto.NetworkDiscoveryRequest.Builder.class);
     }
@@ -249,7 +249,7 @@ public  final class NetworkDiscoveryRequest extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
     }
 
     public se.trantor.grpcproto.NetworkDiscoveryRequest getDefaultInstanceForType() {

@@ -61,12 +61,12 @@ public  final class SpargeDoneNotify extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SpargeDoneNotify_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SpargeDoneNotify_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SpargeDoneNotify_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SpargeDoneNotify_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.SpargeDoneNotify.class, se.trantor.grpcproto.SpargeDoneNotify.Builder.class);
   }
@@ -191,12 +191,12 @@ public  final class SpargeDoneNotify extends
       se.trantor.grpcproto.SpargeDoneNotifyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SpargeDoneNotify_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SpargeDoneNotify_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SpargeDoneNotify_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SpargeDoneNotify_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.SpargeDoneNotify.class, se.trantor.grpcproto.SpargeDoneNotify.Builder.class);
     }
@@ -224,7 +224,7 @@ public  final class SpargeDoneNotify extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_SpargeDoneNotify_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_SpargeDoneNotify_descriptor;
     }
 
     public se.trantor.grpcproto.SpargeDoneNotify getDefaultInstanceForType() {

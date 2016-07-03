@@ -18,6 +18,7 @@ public class BoilController implements Runnable {
 	private int hopAddition = 0;
 	private Date boilStarted;
 	private MashControlStateE state;
+	private boolean isWortChillSanitized = false;
 
 	public BoilController(ArrayList<HopAddition> aHopAdditions, int aBoilTime) {
 		boilTime = aBoilTime;
@@ -25,7 +26,22 @@ public class BoilController implements Runnable {
 		state = MashControlStateE.HEATING;
 	}
 
+	private synchronized void waitForWortChillerSanitizedDoneNotification() {
+		while (!isWortChillSanitized)
+		{
+			try {
+				wait();
+			} catch (InterruptedException e) {}
+		}
+		logger.log(Level.INFO, "Wort chiller sanitized done notification");
+	}
 
+	public synchronized void SetWortChillerSanitized()
+	{
+		isWortChillSanitized = true;
+		notify();
+	}
+	
 	public int getBoilTime()
 	{	
 		Date now = new Date();
@@ -55,9 +71,7 @@ public class BoilController implements Runnable {
 			heater.SetPower(Heater.MAX_POWER);
 
 			while (temperature.GetTemperature() < 99)
-			{				
-				Thread.sleep(TimeUnit.MINUTES.toMillis(1));
-			}
+				Thread.sleep(TimeUnit.MINUTES.toMillis(1));			
 
 			logger.log(Level.INFO, "Reached boil, will boil for {0} minutes", boilTime);
 			boilStarted = new Date();
@@ -65,7 +79,12 @@ public class BoilController implements Runnable {
 			Thread.sleep(TimeUnit.MINUTES.toMillis(boilTime));
 
 
-			logger.log(Level.INFO, "Boil done. Will power off.");
+			logger.log(Level.INFO, "Boil done. Waiting for chiller to be sanitized");
+			state = MashControlStateE.BOIL_DONE;
+			waitForWortChillerSanitizedDoneNotification();
+
+			
+			logger.log(Level.INFO, "Wort chiller to be sanitized, will power off");
 			heater.SetPower(0);
 			state = MashControlStateE.DONE;
 			

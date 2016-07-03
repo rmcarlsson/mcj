@@ -67,12 +67,12 @@ public  final class MashProfileStep extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_MashProfileStep_descriptor;
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_MashProfileStep_fieldAccessorTable
+    return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             se.trantor.grpcproto.MashProfileStep.class, se.trantor.grpcproto.MashProfileStep.Builder.class);
   }
@@ -213,12 +213,12 @@ public  final class MashProfileStep extends
       se.trantor.grpcproto.MashProfileStepOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_MashProfileStep_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_MashProfileStep_fieldAccessorTable
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               se.trantor.grpcproto.MashProfileStep.class, se.trantor.grpcproto.MashProfileStep.Builder.class);
     }
@@ -248,7 +248,7 @@ public  final class MashProfileStep extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return se.trantor.grpcproto.HelloWorldProto.internal_static_grpcproto_MashProfileStep_descriptor;
+      return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_descriptor;
     }
 
     public se.trantor.grpcproto.MashProfileStep getDefaultInstanceForType() {

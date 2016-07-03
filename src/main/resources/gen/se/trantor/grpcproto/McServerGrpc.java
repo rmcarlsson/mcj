@@ -64,6 +64,15 @@ public class McServerGrpc {
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.SpargeDoneNotify.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.google.protobuf.Empty.getDefaultInstance()));
   @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<se.trantor.grpcproto.WortChillerSanitizedDoneNotify,
+      com.google.protobuf.Empty> METHOD_WORT_CHILLER_SANITIZED_DONE =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "grpcproto.McServer", "WortChillerSanitizedDone"),
+          io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.WortChillerSanitizedDoneNotify.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.google.protobuf.Empty.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
   public static final io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       se.trantor.grpcproto.BrewStatusReply> METHOD_GET_STATUS =
       io.grpc.MethodDescriptor.create(
@@ -122,6 +131,11 @@ public class McServerGrpc {
 
     /**
      */
+    public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver);
+
+    /**
+     */
     public void getStatus(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver);
   }
@@ -151,6 +165,12 @@ public class McServerGrpc {
     public void spargeDone(se.trantor.grpcproto.SpargeDoneNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_SPARGE_DONE, responseObserver);
+    }
+
+    @java.lang.Override
+    public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_WORT_CHILLER_SANITIZED_DONE, responseObserver);
     }
 
     @java.lang.Override
@@ -186,6 +206,10 @@ public class McServerGrpc {
 
     /**
      */
+    public com.google.protobuf.Empty wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request);
+
+    /**
+     */
     public se.trantor.grpcproto.BrewStatusReply getStatus(com.google.protobuf.Empty request);
   }
 
@@ -212,6 +236,11 @@ public class McServerGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> spargeDone(
         se.trantor.grpcproto.SpargeDoneNotify request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> wortChillerSanitizedDone(
+        se.trantor.grpcproto.WortChillerSanitizedDoneNotify request);
 
     /**
      */
@@ -265,6 +294,13 @@ public class McServerGrpc {
     }
 
     @java.lang.Override
+    public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_WORT_CHILLER_SANITIZED_DONE, getCallOptions()), request, responseObserver);
+    }
+
+    @java.lang.Override
     public void getStatus(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver) {
       asyncUnaryCall(
@@ -311,6 +347,12 @@ public class McServerGrpc {
     public com.google.protobuf.Empty spargeDone(se.trantor.grpcproto.SpargeDoneNotify request) {
       return blockingUnaryCall(
           getChannel(), METHOD_SPARGE_DONE, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Empty wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_WORT_CHILLER_SANITIZED_DONE, getCallOptions(), request);
     }
 
     @java.lang.Override
@@ -366,6 +408,13 @@ public class McServerGrpc {
     }
 
     @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> wortChillerSanitizedDone(
+        se.trantor.grpcproto.WortChillerSanitizedDoneNotify request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_WORT_CHILLER_SANITIZED_DONE, getCallOptions()), request);
+    }
+
+    @java.lang.Override
     public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.BrewStatusReply> getStatus(
         com.google.protobuf.Empty request) {
       return futureUnaryCall(
@@ -377,7 +426,8 @@ public class McServerGrpc {
   private static final int METHODID_START_STOP_ABORT = 1;
   private static final int METHODID_GRAINS_ADDED = 2;
   private static final int METHODID_SPARGE_DONE = 3;
-  private static final int METHODID_GET_STATUS = 4;
+  private static final int METHODID_WORT_CHILLER_SANITIZED_DONE = 4;
+  private static final int METHODID_GET_STATUS = 5;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -410,6 +460,10 @@ public class McServerGrpc {
           break;
         case METHODID_SPARGE_DONE:
           serviceImpl.spargeDone((se.trantor.grpcproto.SpargeDoneNotify) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
+          break;
+        case METHODID_WORT_CHILLER_SANITIZED_DONE:
+          serviceImpl.wortChillerSanitizedDone((se.trantor.grpcproto.WortChillerSanitizedDoneNotify) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         case METHODID_GET_STATUS:
@@ -463,6 +517,13 @@ public class McServerGrpc {
               se.trantor.grpcproto.SpargeDoneNotify,
               com.google.protobuf.Empty>(
                 serviceImpl, METHODID_SPARGE_DONE)))
+        .addMethod(
+          METHOD_WORT_CHILLER_SANITIZED_DONE,
+          asyncUnaryCall(
+            new MethodHandlers<
+              se.trantor.grpcproto.WortChillerSanitizedDoneNotify,
+              com.google.protobuf.Empty>(
+                serviceImpl, METHODID_WORT_CHILLER_SANITIZED_DONE)))
         .addMethod(
           METHOD_GET_STATUS,
           asyncUnaryCall(
