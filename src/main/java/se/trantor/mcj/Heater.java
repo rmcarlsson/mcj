@@ -5,6 +5,12 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinState;
+import com.pi4j.io.gpio.RaspiPin;
+
 public class Heater implements Runnable {
 
 	private int power = 0;
@@ -27,6 +33,13 @@ public class Heater implements Runnable {
 	public void run() {
 
 		logger.log(Level.INFO, "Spawning heater");
+		
+		// create gpio controller
+        final GpioController gpio = GpioFactory.getInstance();
+        
+        // provision gpio pin #01 as an output pin and turn on
+        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "Heater", PinState.LOW);
+        
 		//gpio_write_val (0);
 		try {
 
@@ -47,20 +60,21 @@ public class Heater implements Runnable {
 
 				if (on_time > 0)
 				{
+					pin.high();
 					Thread.sleep(on_time);
-					//gpio_write_val (1);
+					
 				}
 
 				if (off_time > 0) 
 				{
-					//gpio_write_val (0);
+					pin.low();
 					Thread.sleep(off_time);
 				}
 			}
 		} 
 		catch (InterruptedException e) 
 		{
-			//gpio_write_val(0);
+			pin.low();
 		}	
 	}
 }

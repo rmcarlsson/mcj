@@ -30,7 +30,7 @@ public class PidController {
 	public PidController(double aKp, double aKi, double aKd) {
 		inAuto = false;
 
-		SetOutputLimits(0, 255); // default output limit corresponds to
+		SetOutputLimits(0, Heater.MAX_POWER); // default output limit corresponds to
 		// the arduino pwm limits
 
 		SampleTime = 5000; // default Controller Sample Time is 0.1 seconds
