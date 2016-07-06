@@ -2,11 +2,17 @@ package se.trantor.mcj;
 
 public class TemperatureSingleton {
 
-	public static final String id = "01.7756a67c"; 
-	private static final Temperature instance = new Temperature(id);
+	private static final Temperature instance = new Temperature();
+	private static Thread thrd = null;
 	
 	public static Temperature getInstance()
 	{
+		if (thrd  == null)
+		{
+			thrd = new Thread(instance);
+			thrd.start();
+		}
+		
 		return instance;
 	}
 	

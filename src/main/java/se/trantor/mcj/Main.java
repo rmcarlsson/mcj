@@ -31,9 +31,6 @@ public class Main {
 	    Thread networkDiscoveryThread = new Thread(NetworkDiscoveryThread.getInstance());  
 	    networkDiscoveryThread.start();  
 	    
-
-   
-	    
 	    try {
 			server.blockUntilShutdown();
 		} catch (InterruptedException e) {
