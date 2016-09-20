@@ -6,9 +6,9 @@ import java.util.logging.Logger;
 public class PidController {
 
 	private double setPoint;
-	private double kp;
-	private double ki;
-	private double kd;
+	private double kp = 84.8828;
+	private double ki = 0.038627586;
+	private double kd = 41968.58689;
 
 	double l_p, l_i, l_d = 0;
 
@@ -27,7 +27,7 @@ public class PidController {
 	
 
 
-	public PidController(double aKp, double aKi, double aKd) {
+	public PidController() {
 		inAuto = false;
 
 		SetOutputLimits(0, Heater.MAX_POWER); // default output limit corresponds to
@@ -35,7 +35,7 @@ public class PidController {
 
 		SampleTime = 5000; // default Controller Sample Time is 0.1 seconds
 
-		SetTunings(aKp, aKi, aKd);
+		SetTunings(kp, ki, kd);
 		
 		state = stateE.BINARY_MODE;
 	}
@@ -44,9 +44,7 @@ public class PidController {
 	{
 		logger.log(Level.INFO, "New setpoint {0}", aSetPoint);
 		setPoint = aSetPoint;
-		
-			logger.log(Level.INFO, "Activating binary controller");
-			state = stateE.BINARY_MODE;
+	
 	}
 	
 	public double GetError()
@@ -59,6 +57,7 @@ public class PidController {
 		  /*Compute all the working error variables*/
 		  double input = aInput;
 		  double error = setPoint - input;
+		  
 		  
 		  ITerm += (ki * error);
 		  if (ITerm > outMax)
@@ -104,25 +103,25 @@ public class PidController {
 	}
 	
 	private void resetPid(double aInput) {
+		
+		int k = 6;
+		int m = -230;
+		ITerm = l_i = k * aInput + m;
+		
+	
 		l_d = 0;
 		lastInput = aInput;
-		ITerm = l_i = 120;
 		l_p = (setPoint - aInput) * kp; 
 	}
 
 	public int Exec(double aInput) {
+		
 		int ret = 0;
-		switch (state)
-		{
-		case BINARY_MODE:
+		if (Math.abs(setPoint-aInput) > STABLE_CONTROL_HYST)
 			ret = ExecBinaryMode(aInput);
-			break;
-		case PID_MODE:
+		else
 			ret = ExecPid(aInput);
-			break;
-		default:
-			break;
-		}
+		
 		return ret;
 	}
 			

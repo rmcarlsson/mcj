@@ -1,17 +1,7 @@
 package se.trantor.mcj;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Logger;
-
-
-import com.pi4j.*;
-import com.pi4j.component.temperature.TemperatureSensor;
-import com.pi4j.component.temperature.impl.TmpDS18B20DeviceType;
-import com.pi4j.io.w1.W1Device;
-import com.pi4j.io.w1.W1Master;
 
 public class Main {
 	

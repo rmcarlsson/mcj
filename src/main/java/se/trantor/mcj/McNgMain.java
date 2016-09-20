@@ -40,6 +40,7 @@ public class McNgMain {
 	private Server server;
 
 
+	@SuppressWarnings("deprecation")
 	public void start() throws IOException {
 		server = ServerBuilder.forPort(port).addService(McServerGrpc.bindService(new McServerImpl())).build().start();
 		//		server = ServerBuilder.forPort(port).addService(new McServerImpl()).build().start();
@@ -113,9 +114,10 @@ public class McNgMain {
 			{	
 				MashStep ms = new MashStep();
 				ms.Temperature = step.getTemperature();
-				ms.Time = step.getTime();
+				ms.StepTime = step.getStepTime();
+				ms.HeatOverTime = step.getHeatOverTime();
 				mashStepList.add(ms);
-				logger.log(Level.INFO,  MessageFormat.format("Time {0} for {1} minutes", ms.Temperature, ms.Time));
+				logger.log(Level.INFO,  MessageFormat.format("Heat to {0} C for {1} minutes, stay for {2} minutes", ms.Temperature, ms.HeatOverTime, ms.StepTime));
 			}
 
 			logger.log(Level.INFO, "Hop additions:");
@@ -126,7 +128,7 @@ public class McNgMain {
 				ha.Time = step.getTime();
 				ha.Name = step.getName();
 				hopAdditions.add(ha);
-				logger.log(Level.INFO,  MessageFormat.format("Time {0} for {1} minutes", ha.Time, ha.Name));
+				logger.log(Level.INFO,  MessageFormat.format("Add {0} at {1} minutes before boil end", ha.Name, ha.Time));
 			}
 
 
@@ -234,7 +236,7 @@ public class McNgMain {
 					MashStep ms = i.next();
 					bsr.addRemainingMashSteps(MashProfileStep.newBuilder()
 							.setTemperature(ms.Temperature)
-							.setTime(ms.Time)
+							.setStepTime(ms.StepTime)
 							.build());
 				}
 				
@@ -252,7 +254,7 @@ public class McNgMain {
 				case HEATING_TO_STRIKE_WATER:
 					bsr.setCurrentBrewStep(BrewStep.HEATING);
 					break;
-				case MASHING:
+				case STEP_MASHING:
 					bsr.setCurrentBrewStep(BrewStep.MASHING);
 					break;
 				case MASH_DONE:

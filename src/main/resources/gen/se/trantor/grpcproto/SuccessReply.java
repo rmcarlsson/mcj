@@ -26,7 +26,8 @@ public  final class SuccessReply extends
   }
   private SuccessReply(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     int mutable_bitField0_ = 0;
     try {
@@ -58,11 +59,10 @@ public  final class SuccessReply extends
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw new RuntimeException(e.setUnfinishedMessage(this));
+      throw e.setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new RuntimeException(
-          new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this));
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       makeExtensionsImmutable();
     }
@@ -87,12 +87,12 @@ public  final class SuccessReply extends
     /**
      * <code>OK = 0;</code>
      */
-    OK(0, 0),
+    OK(0),
     /**
      * <code>FALIED = 1;</code>
      */
-    FALIED(1, 1),
-    UNRECOGNIZED(-1, -1),
+    FALIED(1),
+    UNRECOGNIZED(-1),
     ;
 
     /**
@@ -106,14 +106,22 @@ public  final class SuccessReply extends
 
 
     public final int getNumber() {
-      if (index == -1) {
+      if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalArgumentException(
             "Can't get the number of an unknown enum value.");
       }
       return value;
     }
 
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
     public static Success valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static Success forNumber(int value) {
       switch (value) {
         case 0: return OK;
         case 1: return FALIED;
@@ -129,13 +137,13 @@ public  final class SuccessReply extends
         Success> internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<Success>() {
             public Success findValueByNumber(int number) {
-              return Success.valueOf(number);
+              return Success.forNumber(number);
             }
           };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
+      return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
@@ -160,11 +168,9 @@ public  final class SuccessReply extends
       return VALUES[desc.getIndex()];
     }
 
-    private final int index;
     private final int value;
 
-    private Success(int index, int value) {
-      this.index = index;
+    private Success(int value) {
       this.value = value;
     }
 
@@ -183,7 +189,7 @@ public  final class SuccessReply extends
    * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
    */
   public se.trantor.grpcproto.SuccessReply.Success getSuccess() {
-    se.trantor.grpcproto.SuccessReply.Success result = se.trantor.grpcproto.SuccessReply.Success.valueOf(success_);
+    se.trantor.grpcproto.SuccessReply.Success result = se.trantor.grpcproto.SuccessReply.Success.forNumber(success_);
     return result == null ? se.trantor.grpcproto.SuccessReply.Success.UNRECOGNIZED : result;
   }
 
@@ -281,34 +287,40 @@ public  final class SuccessReply extends
   }
   public static se.trantor.grpcproto.SuccessReply parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return PARSER.parseFrom(input);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.SuccessReply parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return PARSER.parseFrom(input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.SuccessReply parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return PARSER.parseDelimitedFrom(input);
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.SuccessReply parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.SuccessReply parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return PARSER.parseFrom(input);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.SuccessReply parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return PARSER.parseFrom(input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -431,7 +443,7 @@ public  final class SuccessReply extends
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (se.trantor.grpcproto.SuccessReply) e.getUnfinishedMessage();
-        throw e;
+        throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -459,7 +471,7 @@ public  final class SuccessReply extends
      * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
      */
     public se.trantor.grpcproto.SuccessReply.Success getSuccess() {
-      se.trantor.grpcproto.SuccessReply.Success result = se.trantor.grpcproto.SuccessReply.Success.valueOf(success_);
+      se.trantor.grpcproto.SuccessReply.Success result = se.trantor.grpcproto.SuccessReply.Success.forNumber(success_);
       return result == null ? se.trantor.grpcproto.SuccessReply.Success.UNRECOGNIZED : result;
     }
     /**
@@ -582,16 +594,7 @@ public  final class SuccessReply extends
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      try {
         return new SuccessReply(input, extensionRegistry);
-      } catch (RuntimeException e) {
-        if (e.getCause() instanceof
-            com.google.protobuf.InvalidProtocolBufferException) {
-          throw (com.google.protobuf.InvalidProtocolBufferException)
-              e.getCause();
-        }
-        throw e;
-      }
     }
   };
 

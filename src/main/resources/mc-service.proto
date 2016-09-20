@@ -53,8 +53,10 @@ message SuccessReply {
 }
 
 message MashProfileStep {
-	int32 temperature = 1;
-	int32 time = 2;
+	int32 heat_over_time = 1;
+	int32 temperature = 2;
+	int32 step_time = 3;
+	
 }
 
 enum BrewStep {

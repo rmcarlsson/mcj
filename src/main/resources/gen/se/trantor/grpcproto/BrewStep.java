@@ -11,32 +11,32 @@ public enum BrewStep
   /**
    * <code>IDLE = 0;</code>
    */
-  IDLE(0, 0),
+  IDLE(0),
   /**
    * <code>HEATING = 1;</code>
    */
-  HEATING(1, 1),
+  HEATING(1),
   /**
    * <code>STRIKE_WATER_TEMP_REACHED = 2;</code>
    */
-  STRIKE_WATER_TEMP_REACHED(2, 2),
+  STRIKE_WATER_TEMP_REACHED(2),
   /**
    * <code>MASHING = 3;</code>
    */
-  MASHING(3, 3),
+  MASHING(3),
   /**
    * <code>MASH_DONE_START_SPARGE = 4;</code>
    */
-  MASH_DONE_START_SPARGE(4, 4),
+  MASH_DONE_START_SPARGE(4),
   /**
    * <code>BOILING = 5;</code>
    */
-  BOILING(5, 5),
+  BOILING(5),
   /**
    * <code>BOIL_DONE = 6;</code>
    */
-  BOIL_DONE(6, 6),
-  UNRECOGNIZED(-1, -1),
+  BOIL_DONE(6),
+  UNRECOGNIZED(-1),
   ;
 
   /**
@@ -70,14 +70,22 @@ public enum BrewStep
 
 
   public final int getNumber() {
-    if (index == -1) {
+    if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalArgumentException(
           "Can't get the number of an unknown enum value.");
     }
     return value;
   }
 
+  /**
+   * @deprecated Use {@link #forNumber(int)} instead.
+   */
+  @java.lang.Deprecated
   public static BrewStep valueOf(int value) {
+    return forNumber(value);
+  }
+
+  public static BrewStep forNumber(int value) {
     switch (value) {
       case 0: return IDLE;
       case 1: return HEATING;
@@ -98,13 +106,13 @@ public enum BrewStep
       BrewStep> internalValueMap =
         new com.google.protobuf.Internal.EnumLiteMap<BrewStep>() {
           public BrewStep findValueByNumber(int number) {
-            return BrewStep.valueOf(number);
+            return BrewStep.forNumber(number);
           }
         };
 
   public final com.google.protobuf.Descriptors.EnumValueDescriptor
       getValueDescriptor() {
-    return getDescriptor().getValues().get(index);
+    return getDescriptor().getValues().get(ordinal());
   }
   public final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptorForType() {
@@ -130,11 +138,9 @@ public enum BrewStep
     return VALUES[desc.getIndex()];
   }
 
-  private final int index;
   private final int value;
 
-  private BrewStep(int index, int value) {
-    this.index = index;
+  private BrewStep(int value) {
     this.value = value;
   }
 

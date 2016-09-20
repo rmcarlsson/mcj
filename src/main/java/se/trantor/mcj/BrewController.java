@@ -74,7 +74,7 @@ public class BrewController implements Runnable{
 		
 		for (int i=0; i < mashProfile.size(); i++)
 		{	
-			ret += mashProfile.get(i).Time;
+			ret += mashProfile.get(i).StepTime;
 		}
 		
 		ret += boilTime;
@@ -101,7 +101,7 @@ public class BrewController implements Runnable{
 			ret.currentMashProfile = msc.GetCurrentMashProfileStatus();
 			for (int i=0; i < ret.currentMashProfile.size(); i++)
 			{	
-				totalTimeRemaining += ret.currentMashProfile.get(i).Time;
+				totalTimeRemaining += ret.currentMashProfile.get(i).StepTime;
 			}
 		}	
 		totalTimeRemaining += ret.boilTime;

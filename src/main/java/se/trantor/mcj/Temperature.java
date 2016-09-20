@@ -12,16 +12,15 @@ import com.pi4j.io.w1.W1Master;
 
 public class Temperature implements Runnable {
 
-	private String id;
 	double temperature;
 	private Heater heater;
-	private PidController pidController;
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 	private W1Device device = null;
 
 	public Temperature()
 	{
 		temperature = 50;
+		heater = HeaterSingleton.getInstance();
 	}
 
 	public double GetTemperature()
@@ -42,10 +41,6 @@ public class Temperature implements Runnable {
 		heater = aHeater;
 	}
 
-	public void SetPidController(PidController aPid)
-	{
-		pidController = aPid;
-	}
 
 	@Override
 	public void run() {

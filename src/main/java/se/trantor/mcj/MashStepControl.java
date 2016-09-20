@@ -3,50 +3,43 @@ package se.trantor.mcj;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import se.trantor.grpcproto.BrewStatusReply;
-import se.trantor.mcj.MashStepControl.MashControlStateE;
-
 public class MashStepControl implements Runnable {
 
 	public enum MashControlStateE {
-		INIT, WAIT_FOR_GRAINS, MASHING, HEATING, MASH_DONE, HEATING_TO_STRIKE_WATER, BOILING, BOIL_DONE, DONE;
+		INIT, WAIT_FOR_GRAINS, STEP_MASHING, HEATING, MASH_DONE, HEATING_TO_STRIKE_WATER, BOILING, BOIL_DONE, DONE, HEAT_OVER_MASHING;
 	}
+
 	private ArrayList<MashStep> mashStepProfile;
 	private int stepIx;
 
 	private PidController pidController;
 	private Temperature temperature;
 
-	private int period;
 
 	private boolean running;
 
 	private MashControlStateE state;
 	private boolean grainsAdded;
-	private MashStep currMashStep ;
+	private MashStep currMashStep;
+
 	private Date stepStartTime;
+	private double dtemp_dt;
+	double mashTemp;
 
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 
-
-	public MashStepControl(ArrayList<MashStep> aMashProfile)
-	{
+	public MashStepControl(ArrayList<MashStep> aMashProfile) {
 		state = MashControlStateE.INIT;
 		grainsAdded = false;
 		stepIx = 0;
 		mashStepProfile = aMashProfile;
 	}
 
-	public void SetGrainsAdded(boolean aGrainAddedIndication)
-	{
+	public void SetGrainsAdded(boolean aGrainAddedIndication) {
 		grainsAdded = true;
 	}
 
@@ -57,34 +50,57 @@ public class MashStepControl implements Runnable {
 
 	void handle_heating() {
 		if (pidController.isControlStable()) {
-			state = MashControlStateE.MASHING;
-			logger.log(Level.INFO,
-					MessageFormat.format("Heating done to {0} C. Will stay for {1} minutes.",
-							currMashStep.Temperature, currMashStep.Time));
+			state = MashControlStateE.STEP_MASHING;
+			logger.log(Level.INFO, MessageFormat.format("Heating done to {0} C. Will stay for {1} minutes.",
+					currMashStep.Temperature, currMashStep.StepTime));
 		}
 	}
 
-	private void handle_mashing() {
+	private void handle_step_mashing() {
 		Date now = new Date();
 
 		if (stepStartTime == null)
 			stepStartTime = new Date();
 
 		long td = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - stepStartTime.getTime());
+		if (td < 0)
+			td = 0;
 
-		if (td >= currMashStep.Time) {
-			stepStartTime = new Date();
+		// The step in the mashing is done. What next?
+		if (td >= currMashStep.StepTime) {
 
 			stepIx++;
-			if(mashStepProfile.size() > stepIx)
-			{
+			if (mashStepProfile.size() > stepIx) {
+				
+				mashTemp = currMashStep.Temperature;
+				
 				currMashStep = mashStepProfile.get(stepIx);
-				pidController.SetSetPoint(currMashStep.Temperature);
-				logger.log(Level.INFO, "Starting next step. Heating to {0} C", currMashStep.Temperature);
+				
+				logger.log(Level.INFO,MessageFormat.format("Loading next mash step heat to {0} C over {1} minutes. Stay on rest for {2} minutes, ",
+						currMashStep.Temperature, currMashStep.HeatOverTime, currMashStep.StepTime));
+				stepStartTime = null;
 
-				// <########## STATE transition INIT -> WAIT_FOR_GRAINS ##########>
-				state = MashControlStateE.HEATING;
 
+				if (currMashStep.HeatOverTime != 0) { 
+					// Reset integrator with new value based on temperature derivate.
+					float timeBase = (TimeUnit.MINUTES.toSeconds(currMashStep.HeatOverTime) * 5); 
+					dtemp_dt = (currMashStep.Temperature - mashTemp)/timeBase;
+					// Prepare and set new state.
+					
+					// <########## STATE transition STEP_MASHING -> HEAT_OVER_MASHING ##########>
+					state = MashControlStateE.HEAT_OVER_MASHING;
+					
+				} else {
+					
+					//
+					stepStartTime = new Date();
+
+					pidController.SetSetPoint(currMashStep.Temperature);
+					logger.log(Level.INFO, "Starting next step. Heating to {0} C", currMashStep.Temperature);
+
+					// <########## STATE transition STEP_MASHING -> HEATING ##########>
+					state = MashControlStateE.HEATING;
+				}
 
 			} else {
 				state = MashControlStateE.MASH_DONE;
@@ -98,7 +114,8 @@ public class MashStepControl implements Runnable {
 
 		if (pidController.isControlStable()) {
 			pidController.SetSetPoint(currMashStep.Temperature);
-			logger.log(Level.INFO, "Strike water temperature reached, targeting first mash step at {0} C. Please add grains.",
+			logger.log(Level.INFO,
+					"Strike water temperature reached, targeting first mash step at {0} C. Please add grains.",
 					currMashStep.Temperature);
 			grainsAdded = false;
 
@@ -110,15 +127,16 @@ public class MashStepControl implements Runnable {
 
 	public void handle_wait_for_grains() {
 
-		if (grainsAdded) {
+               		if (grainsAdded) {
 			logger.log(Level.INFO, "Starting first mash step at {0} C\n", currMashStep.Temperature);
 
-			// <########## STATE transition WAIT_FOR_GRAINS -> MASHING ##########>
-			state = MashControlStateE.MASHING;
+			// <########## STATE transition WAIT_FOR_GRAINS -> STEP_MASHING ##########>
+			state = MashControlStateE.STEP_MASHING;
+		
+			
 		}
 
 	}
-
 
 	private void Exec() {
 
@@ -135,44 +153,66 @@ public class MashStepControl implements Runnable {
 		case HEATING:
 			handle_heating();
 			break;
-		case MASHING:
-			handle_mashing();
+		case HEAT_OVER_MASHING:
+			handle_heat_over_mashing();
+		case STEP_MASHING:
+			handle_step_mashing();
 			break;
 		case MASH_DONE:
 			handle_done();
 			break;
 		default:
-			assert(true);
+			assert (true);
 			break;
 		}
 	}
+	
+	
+	
+	private void handle_heat_over_mashing() {
+
+		mashTemp += dtemp_dt;
+
+		pidController.SetSetPoint(mashTemp);
+		logger.log(Level.FINE,
+				"Update setpoint to {0} C to hold heat over temperature.", mashTemp);
+		pidController.SetSetPoint(mashTemp);
+
+		// The step in the mashing is done. What next?
+		if (mashTemp >= currMashStep.Temperature) {
+			// <########## STATE transition HEAT_OVER_MASHING -> STEP_MASHING ##########>
+			state = MashControlStateE.STEP_MASHING;
+			
+			// Transition action
+			pidController.SetSetPoint(currMashStep.Temperature);
+		}
+	}
+	
+	
 
 	private void handle_init() {
 		currMashStep = mashStepProfile.get(0);
-		logger.log(Level.INFO,
-				"Heating to strike water temperature at {0} for the first step", currMashStep.Temperature);
+		logger.log(Level.INFO, "Heating to strike water temperature at {0} for the first step",
+				currMashStep.Temperature);
 
 		pidController.SetSetPoint(currMashStep.Temperature);
 
-		// <########## STATE transition INIT -> HEATING_TO_STRIKE_WATER ##########>
+		// <########## STATE transition INIT -> HEATING_TO_STRIKE_WATER
+		// ##########>
 		state = MashControlStateE.HEATING_TO_STRIKE_WATER;
 
 	}
-
 
 	public void run() {
 		try {
 
 			Heater heater = HeaterSingleton.getInstance();
-			pidController = new PidController(1, 2, 3);
+			pidController = new PidController();
 
 			temperature = TemperatureSingleton.getInstance();
-			temperature.SetHeater(heater);
-			temperature.SetPidController(pidController);
 			running = true;
 
-			while (running && !Thread.currentThread().isInterrupted()) 
-			{
+			while (running && !Thread.currentThread().isInterrupted()) {
 
 				Thread.sleep(Heater.PERIOD);
 				this.Exec();
@@ -180,9 +220,8 @@ public class MashStepControl implements Runnable {
 				int controlSignal = pidController.Exec(temperature.GetTemperature());
 				heater.SetPower(controlSignal);
 
-			} 
-		}
-		catch (InterruptedException e) {
+			}
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			logger.log(Level.INFO, "Mashing aborted. Shutting down");
 			running = false;
@@ -192,18 +231,16 @@ public class MashStepControl implements Runnable {
 		HeaterSingleton.getInstance().SetPower(0);
 	}
 
-
 	public ArrayList<MashStep> GetCurrentMashProfileStatus() {
 		ArrayList<MashStep> ret = new ArrayList<MashStep>();
-		for (int i=stepIx; i < mashStepProfile.size(); i++)
-		{	
+		for (int i = stepIx; i < mashStepProfile.size(); i++) {
 			MashStep s = new MashStep();
 			s.Temperature = mashStepProfile.get(i).Temperature;
-			s.Time = mashStepProfile.get(i).Time;
-			if ((i==stepIx) && (stepStartTime != null)) {
+			s.StepTime = mashStepProfile.get(i).StepTime;
+			if ((i == stepIx) && (stepStartTime != null)) {
 				Date now = new Date();
 				long td = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - stepStartTime.getTime());
-				s.Time -= td;  
+				s.StepTime -= td;
 			}
 			ret.add(s);
 		}
@@ -226,8 +263,5 @@ public class MashStepControl implements Runnable {
 	public MashControlStateE GetState() {
 		return state;
 	}
-
-
-
 
 }

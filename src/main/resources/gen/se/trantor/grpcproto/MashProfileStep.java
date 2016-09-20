@@ -15,8 +15,9 @@ public  final class MashProfileStep extends
     super(builder);
   }
   private MashProfileStep() {
+    heatOverTime_ = 0;
     temperature_ = 0;
-    time_ = 0;
+    stepTime_ = 0;
   }
 
   @java.lang.Override
@@ -26,7 +27,8 @@ public  final class MashProfileStep extends
   }
   private MashProfileStep(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     int mutable_bitField0_ = 0;
     try {
@@ -45,22 +47,26 @@ public  final class MashProfileStep extends
           }
           case 8: {
 
-            temperature_ = input.readInt32();
+            heatOverTime_ = input.readInt32();
             break;
           }
           case 16: {
 
-            time_ = input.readInt32();
+            temperature_ = input.readInt32();
+            break;
+          }
+          case 24: {
+
+            stepTime_ = input.readInt32();
             break;
           }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw new RuntimeException(e.setUnfinishedMessage(this));
+      throw e.setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new RuntimeException(
-          new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this));
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       makeExtensionsImmutable();
     }
@@ -77,22 +83,31 @@ public  final class MashProfileStep extends
             se.trantor.grpcproto.MashProfileStep.class, se.trantor.grpcproto.MashProfileStep.Builder.class);
   }
 
-  public static final int TEMPERATURE_FIELD_NUMBER = 1;
+  public static final int HEAT_OVER_TIME_FIELD_NUMBER = 1;
+  private int heatOverTime_;
+  /**
+   * <code>optional int32 heat_over_time = 1;</code>
+   */
+  public int getHeatOverTime() {
+    return heatOverTime_;
+  }
+
+  public static final int TEMPERATURE_FIELD_NUMBER = 2;
   private int temperature_;
   /**
-   * <code>optional int32 temperature = 1;</code>
+   * <code>optional int32 temperature = 2;</code>
    */
   public int getTemperature() {
     return temperature_;
   }
 
-  public static final int TIME_FIELD_NUMBER = 2;
-  private int time_;
+  public static final int STEP_TIME_FIELD_NUMBER = 3;
+  private int stepTime_;
   /**
-   * <code>optional int32 time = 2;</code>
+   * <code>optional int32 step_time = 3;</code>
    */
-  public int getTime() {
-    return time_;
+  public int getStepTime() {
+    return stepTime_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -107,11 +122,14 @@ public  final class MashProfileStep extends
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (temperature_ != 0) {
-      output.writeInt32(1, temperature_);
+    if (heatOverTime_ != 0) {
+      output.writeInt32(1, heatOverTime_);
     }
-    if (time_ != 0) {
-      output.writeInt32(2, time_);
+    if (temperature_ != 0) {
+      output.writeInt32(2, temperature_);
+    }
+    if (stepTime_ != 0) {
+      output.writeInt32(3, stepTime_);
     }
   }
 
@@ -120,13 +138,17 @@ public  final class MashProfileStep extends
     if (size != -1) return size;
 
     size = 0;
+    if (heatOverTime_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, heatOverTime_);
+    }
     if (temperature_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, temperature_);
+        .computeInt32Size(2, temperature_);
     }
-    if (time_ != 0) {
+    if (stepTime_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, time_);
+        .computeInt32Size(3, stepTime_);
     }
     memoizedSize = size;
     return size;
@@ -156,34 +178,40 @@ public  final class MashProfileStep extends
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return PARSER.parseFrom(input);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return PARSER.parseFrom(input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.MashProfileStep parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return PARSER.parseDelimitedFrom(input);
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.MashProfileStep parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return PARSER.parseFrom(input);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return PARSER.parseFrom(input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   public Builder newBuilderForType() { return newBuilder(); }
@@ -239,9 +267,11 @@ public  final class MashProfileStep extends
     }
     public Builder clear() {
       super.clear();
+      heatOverTime_ = 0;
+
       temperature_ = 0;
 
-      time_ = 0;
+      stepTime_ = 0;
 
       return this;
     }
@@ -265,8 +295,9 @@ public  final class MashProfileStep extends
 
     public se.trantor.grpcproto.MashProfileStep buildPartial() {
       se.trantor.grpcproto.MashProfileStep result = new se.trantor.grpcproto.MashProfileStep(this);
+      result.heatOverTime_ = heatOverTime_;
       result.temperature_ = temperature_;
-      result.time_ = time_;
+      result.stepTime_ = stepTime_;
       onBuilt();
       return result;
     }
@@ -282,11 +313,14 @@ public  final class MashProfileStep extends
 
     public Builder mergeFrom(se.trantor.grpcproto.MashProfileStep other) {
       if (other == se.trantor.grpcproto.MashProfileStep.getDefaultInstance()) return this;
+      if (other.getHeatOverTime() != 0) {
+        setHeatOverTime(other.getHeatOverTime());
+      }
       if (other.getTemperature() != 0) {
         setTemperature(other.getTemperature());
       }
-      if (other.getTime() != 0) {
-        setTime(other.getTime());
+      if (other.getStepTime() != 0) {
+        setStepTime(other.getStepTime());
       }
       onChanged();
       return this;
@@ -305,7 +339,7 @@ public  final class MashProfileStep extends
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage = (se.trantor.grpcproto.MashProfileStep) e.getUnfinishedMessage();
-        throw e;
+        throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
@@ -314,15 +348,41 @@ public  final class MashProfileStep extends
       return this;
     }
 
+    private int heatOverTime_ ;
+    /**
+     * <code>optional int32 heat_over_time = 1;</code>
+     */
+    public int getHeatOverTime() {
+      return heatOverTime_;
+    }
+    /**
+     * <code>optional int32 heat_over_time = 1;</code>
+     */
+    public Builder setHeatOverTime(int value) {
+      
+      heatOverTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional int32 heat_over_time = 1;</code>
+     */
+    public Builder clearHeatOverTime() {
+      
+      heatOverTime_ = 0;
+      onChanged();
+      return this;
+    }
+
     private int temperature_ ;
     /**
-     * <code>optional int32 temperature = 1;</code>
+     * <code>optional int32 temperature = 2;</code>
      */
     public int getTemperature() {
       return temperature_;
     }
     /**
-     * <code>optional int32 temperature = 1;</code>
+     * <code>optional int32 temperature = 2;</code>
      */
     public Builder setTemperature(int value) {
       
@@ -331,7 +391,7 @@ public  final class MashProfileStep extends
       return this;
     }
     /**
-     * <code>optional int32 temperature = 1;</code>
+     * <code>optional int32 temperature = 2;</code>
      */
     public Builder clearTemperature() {
       
@@ -340,28 +400,28 @@ public  final class MashProfileStep extends
       return this;
     }
 
-    private int time_ ;
+    private int stepTime_ ;
     /**
-     * <code>optional int32 time = 2;</code>
+     * <code>optional int32 step_time = 3;</code>
      */
-    public int getTime() {
-      return time_;
+    public int getStepTime() {
+      return stepTime_;
     }
     /**
-     * <code>optional int32 time = 2;</code>
+     * <code>optional int32 step_time = 3;</code>
      */
-    public Builder setTime(int value) {
+    public Builder setStepTime(int value) {
       
-      time_ = value;
+      stepTime_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional int32 time = 2;</code>
+     * <code>optional int32 step_time = 3;</code>
      */
-    public Builder clearTime() {
+    public Builder clearStepTime() {
       
-      time_ = 0;
+      stepTime_ = 0;
       onChanged();
       return this;
     }
@@ -395,16 +455,7 @@ public  final class MashProfileStep extends
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      try {
         return new MashProfileStep(input, extensionRegistry);
-      } catch (RuntimeException e) {
-        if (e.getCause() instanceof
-            com.google.protobuf.InvalidProtocolBufferException) {
-          throw (com.google.protobuf.InvalidProtocolBufferException)
-              e.getCause();
-        }
-        throw e;
-      }
     }
   };
 

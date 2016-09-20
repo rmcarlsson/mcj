@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 0.14.0)",
+    value = "by gRPC proto compiler (version 0.15.0)",
     comments = "Source: mc-service.proto")
 public class McServerGrpc {
 
@@ -27,7 +27,7 @@ public class McServerGrpc {
   public static final String SERVICE_NAME = "grpcproto.McServer";
 
   // Static method descriptors that strictly reflect the proto.
-  @io.grpc.ExperimentalApi
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<se.trantor.grpcproto.LoadBrewProfileRequest,
       se.trantor.grpcproto.SuccessReply> METHOD_LOAD_BREW_PROFILE =
       io.grpc.MethodDescriptor.create(
@@ -36,7 +36,7 @@ public class McServerGrpc {
               "grpcproto.McServer", "LoadBrewProfile"),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.LoadBrewProfileRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.SuccessReply.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<se.trantor.grpcproto.StartStopRequest,
       se.trantor.grpcproto.SuccessReply> METHOD_START_STOP_ABORT =
       io.grpc.MethodDescriptor.create(
@@ -45,7 +45,7 @@ public class McServerGrpc {
               "grpcproto.McServer", "StartStopAbort"),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.StartStopRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.SuccessReply.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<se.trantor.grpcproto.GrainsAddedNotify,
       com.google.protobuf.Empty> METHOD_GRAINS_ADDED =
       io.grpc.MethodDescriptor.create(
@@ -54,7 +54,7 @@ public class McServerGrpc {
               "grpcproto.McServer", "GrainsAdded"),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.GrainsAddedNotify.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.google.protobuf.Empty.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<se.trantor.grpcproto.SpargeDoneNotify,
       com.google.protobuf.Empty> METHOD_SPARGE_DONE =
       io.grpc.MethodDescriptor.create(
@@ -63,7 +63,7 @@ public class McServerGrpc {
               "grpcproto.McServer", "SpargeDone"),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.SpargeDoneNotify.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.google.protobuf.Empty.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<se.trantor.grpcproto.WortChillerSanitizedDoneNotify,
       com.google.protobuf.Empty> METHOD_WORT_CHILLER_SANITIZED_DONE =
       io.grpc.MethodDescriptor.create(
@@ -72,7 +72,7 @@ public class McServerGrpc {
               "grpcproto.McServer", "WortChillerSanitizedDone"),
           io.grpc.protobuf.ProtoUtils.marshaller(se.trantor.grpcproto.WortChillerSanitizedDoneNotify.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.google.protobuf.Empty.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       se.trantor.grpcproto.BrewStatusReply> METHOD_GET_STATUS =
       io.grpc.MethodDescriptor.create(
@@ -107,7 +107,7 @@ public class McServerGrpc {
 
   /**
    */
-  public static interface McServer {
+  @java.lang.Deprecated public static interface McServer {
 
     /**
      */
@@ -140,8 +140,8 @@ public class McServerGrpc {
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver);
   }
 
-  @io.grpc.ExperimentalApi
-  public static abstract class AbstractMcServer implements McServer, io.grpc.BindableService {
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1469")
+  public static abstract class McServerImplBase implements McServer, io.grpc.BindableService {
 
     @java.lang.Override
     public void loadBrewProfile(se.trantor.grpcproto.LoadBrewProfileRequest request,
@@ -186,7 +186,7 @@ public class McServerGrpc {
 
   /**
    */
-  public static interface McServerBlockingClient {
+  @java.lang.Deprecated public static interface McServerBlockingClient {
 
     /**
      */
@@ -215,7 +215,7 @@ public class McServerGrpc {
 
   /**
    */
-  public static interface McServerFutureClient {
+  @java.lang.Deprecated public static interface McServerFutureClient {
 
     /**
      */
@@ -422,6 +422,8 @@ public class McServerGrpc {
     }
   }
 
+  @java.lang.Deprecated public static abstract class AbstractMcServer extends McServerImplBase {}
+
   private static final int METHODID_LOAD_BREW_PROFILE = 0;
   private static final int METHODID_START_STOP_ABORT = 1;
   private static final int METHODID_GRAINS_ADDED = 2;
@@ -486,9 +488,19 @@ public class McServerGrpc {
     }
   }
 
-  public static io.grpc.ServerServiceDefinition bindService(
+  public static io.grpc.ServiceDescriptor getServiceDescriptor() {
+    return new io.grpc.ServiceDescriptor(SERVICE_NAME,
+        METHOD_LOAD_BREW_PROFILE,
+        METHOD_START_STOP_ABORT,
+        METHOD_GRAINS_ADDED,
+        METHOD_SPARGE_DONE,
+        METHOD_WORT_CHILLER_SANITIZED_DONE,
+        METHOD_GET_STATUS);
+  }
+
+  @java.lang.Deprecated public static io.grpc.ServerServiceDefinition bindService(
       final McServer serviceImpl) {
-    return io.grpc.ServerServiceDefinition.builder(SERVICE_NAME)
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
           METHOD_LOAD_BREW_PROFILE,
           asyncUnaryCall(

@@ -8,59 +8,59 @@ public final class GrainbrainProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_NetworkDiscoveryReply_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_NetworkDiscoveryReply_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_GrainsAddedNotify_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_GrainsAddedNotify_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_SpargeDoneNotify_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_SpargeDoneNotify_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_WortChillerSanitizedDoneNotify_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_WortChillerSanitizedDoneNotify_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_SuccessReply_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_SuccessReply_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_MashProfileStep_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_MashProfileStep_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_HopAdditionStep_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_HopAdditionStep_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_BrewStatusReply_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_BrewStatusReply_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable;
-  static com.google.protobuf.Descriptors.Descriptor
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_grpcproto_StartStopRequest_descriptor;
-  static
+  static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_grpcproto_StartStopRequest_fieldAccessorTable;
 
@@ -68,7 +68,7 @@ public final class GrainbrainProto {
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -81,40 +81,41 @@ public final class GrainbrainProto {
       "\002id\030\001 \001(\005\"l\n\014SuccessReply\0220\n\007success\030\001 \001" +
       "(\0162\037.grpcproto.SuccessReply.Success\022\013\n\003m" +
       "sg\030\002 \001(\t\"\035\n\007Success\022\006\n\002OK\020\000\022\n\n\006FALIED\020\001\"" +
-      "4\n\017MashProfileStep\022\023\n\013temperature\030\001 \001(\005\022",
-      "\014\n\004time\030\002 \001(\005\"-\n\017HopAdditionStep\022\014\n\004time" +
-      "\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\"\244\002\n\017BrewStatusReply" +
-      "\022.\n\021current_brew_step\030\001 \001(\0162\023.grpcproto." +
-      "BrewStep\0228\n\024remaining_mash_steps\030\002 \003(\0132\032" +
-      ".grpcproto.MashProfileStep\022\030\n\020mash_tempe" +
-      "rature\030\003 \001(\001\022!\n\031mash_temperature_setpoin" +
-      "t\030\004 \001(\001\022;\n\027remaining_hop_additions\030\005 \003(\013" +
-      "2\032.grpcproto.HopAdditionStep\022\033\n\023remainin" +
-      "g_boil_time\030\006 \001(\005\022\020\n\010progress\030\007 \001(\005\"\232\001\n\026" +
-      "LoadBrewProfileRequest\0226\n\022mash_profile_s",
-      "teps\030\001 \003(\0132\032.grpcproto.MashProfileStep\0225" +
-      "\n\021hop_addition_step\030\002 \003(\0132\032.grpcproto.Ho" +
-      "pAdditionStep\022\021\n\tboil_time\030\003 \001(\005\"z\n\020Star" +
-      "tStopRequest\0229\n\nstart_stop\030\001 \001(\0162%.grpcp" +
-      "roto.StartStopRequest.StartStop\"+\n\tStart" +
-      "Stop\022\t\n\005START\020\000\022\010\n\004STOP\020\001\022\t\n\005ABORT\020\002*\205\001\n" +
-      "\010BrewStep\022\010\n\004IDLE\020\000\022\013\n\007HEATING\020\001\022\035\n\031STRI" +
-      "KE_WATER_TEMP_REACHED\020\002\022\013\n\007MASHING\020\003\022\032\n\026" +
-      "MASH_DONE_START_SPARGE\020\004\022\013\n\007BOILING\020\005\022\r\n" +
-      "\tBOIL_DONE\020\0062\325\003\n\010McServer\022O\n\017LoadBrewPro",
-      "file\022!.grpcproto.LoadBrewProfileRequest\032" +
-      "\027.grpcproto.SuccessReply\"\000\022H\n\016StartStopA" +
-      "bort\022\033.grpcproto.StartStopRequest\032\027.grpc" +
-      "proto.SuccessReply\"\000\022E\n\013GrainsAdded\022\034.gr" +
-      "pcproto.GrainsAddedNotify\032\026.google.proto" +
-      "buf.Empty\"\000\022C\n\nSpargeDone\022\033.grpcproto.Sp" +
-      "argeDoneNotify\032\026.google.protobuf.Empty\"\000" +
-      "\022_\n\030WortChillerSanitizedDone\022).grpcproto" +
-      ".WortChillerSanitizedDoneNotify\032\026.google" +
-      ".protobuf.Empty\"\000\022A\n\tGetStatus\022\026.google.",
-      "protobuf.Empty\032\032.grpcproto.BrewStatusRep" +
-      "ly\"\000B)\n\024se.trantor.grpcprotoB\017Grainbrain" +
-      "ProtoP\001b\006proto3"
+      "Q\n\017MashProfileStep\022\026\n\016heat_over_time\030\001 \001",
+      "(\005\022\023\n\013temperature\030\002 \001(\005\022\021\n\tstep_time\030\003 \001" +
+      "(\005\"-\n\017HopAdditionStep\022\014\n\004time\030\001 \001(\005\022\014\n\004n" +
+      "ame\030\002 \001(\t\"\244\002\n\017BrewStatusReply\022.\n\021current" +
+      "_brew_step\030\001 \001(\0162\023.grpcproto.BrewStep\0228\n" +
+      "\024remaining_mash_steps\030\002 \003(\0132\032.grpcproto." +
+      "MashProfileStep\022\030\n\020mash_temperature\030\003 \001(" +
+      "\001\022!\n\031mash_temperature_setpoint\030\004 \001(\001\022;\n\027" +
+      "remaining_hop_additions\030\005 \003(\0132\032.grpcprot" +
+      "o.HopAdditionStep\022\033\n\023remaining_boil_time" +
+      "\030\006 \001(\005\022\020\n\010progress\030\007 \001(\005\"\232\001\n\026LoadBrewPro",
+      "fileRequest\0226\n\022mash_profile_steps\030\001 \003(\0132" +
+      "\032.grpcproto.MashProfileStep\0225\n\021hop_addit" +
+      "ion_step\030\002 \003(\0132\032.grpcproto.HopAdditionSt" +
+      "ep\022\021\n\tboil_time\030\003 \001(\005\"z\n\020StartStopReques" +
+      "t\0229\n\nstart_stop\030\001 \001(\0162%.grpcproto.StartS" +
+      "topRequest.StartStop\"+\n\tStartStop\022\t\n\005STA" +
+      "RT\020\000\022\010\n\004STOP\020\001\022\t\n\005ABORT\020\002*\205\001\n\010BrewStep\022\010" +
+      "\n\004IDLE\020\000\022\013\n\007HEATING\020\001\022\035\n\031STRIKE_WATER_TE" +
+      "MP_REACHED\020\002\022\013\n\007MASHING\020\003\022\032\n\026MASH_DONE_S" +
+      "TART_SPARGE\020\004\022\013\n\007BOILING\020\005\022\r\n\tBOIL_DONE\020",
+      "\0062\325\003\n\010McServer\022O\n\017LoadBrewProfile\022!.grpc" +
+      "proto.LoadBrewProfileRequest\032\027.grpcproto" +
+      ".SuccessReply\"\000\022H\n\016StartStopAbort\022\033.grpc" +
+      "proto.StartStopRequest\032\027.grpcproto.Succe" +
+      "ssReply\"\000\022E\n\013GrainsAdded\022\034.grpcproto.Gra" +
+      "insAddedNotify\032\026.google.protobuf.Empty\"\000" +
+      "\022C\n\nSpargeDone\022\033.grpcproto.SpargeDoneNot" +
+      "ify\032\026.google.protobuf.Empty\"\000\022_\n\030WortChi" +
+      "llerSanitizedDone\022).grpcproto.WortChille" +
+      "rSanitizedDoneNotify\032\026.google.protobuf.E",
+      "mpty\"\000\022A\n\tGetStatus\022\026.google.protobuf.Em" +
+      "pty\032\032.grpcproto.BrewStatusReply\"\000B)\n\024se." +
+      "trantor.grpcprotoB\017GrainbrainProtoP\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -170,7 +171,7 @@ public final class GrainbrainProto {
     internal_static_grpcproto_MashProfileStep_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_grpcproto_MashProfileStep_descriptor,
-        new java.lang.String[] { "Temperature", "Time", });
+        new java.lang.String[] { "HeatOverTime", "Temperature", "StepTime", });
     internal_static_grpcproto_HopAdditionStep_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_grpcproto_HopAdditionStep_fieldAccessorTable = new
