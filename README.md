@@ -16,15 +16,12 @@ Grainbrain is a simple control system for Grainfather. It has no graphical user 
 
 
 ### gRPC services
-* Load brew profile. Loads mash step profile, boil time and boil hop additions.
-
-* Start and stop the brew process. Stop is only intended for brew process abort. There is no "pause" service.
-
-* Mash sparge done notification. The brew system must be informed, from the brewer, that the sparge is complete and the boil can be started.
-
-* Counter flow chiller sanitized. The counter flow chiller must be sanitized during or after the boil prior to chilling the wort. The brewer must hence notify the brew system that the chiller has been sanitized before the power during boil shall be switched off. Note, the boil will continue until this notification has been sent to the 
-
-* Get brew system status. Provides information about remaining ateps and time in mamsh profile, remaining boil time and overall progress.
+* LoadBrewProfile - Load brew profile. Loads mash step profile, boil time and boil hop additions.
+* StartStopAbort - Start and stop the brew process. Stop is only intended for brew process abort. There is no "pause" service.
+* GrainsAdded - Notofocation from brewer to grainbrain that grains have been added and mash schedule may begin.
+* SpargeDone - Mash sparge done notification. The brew system must be informed, from the brewer, that the sparge is complete and the boil can be started.
+* WortChillerSanitizedDone - Counter flow chiller sanitized. The counter flow chiller must be sanitized during or after the boil prior to chilling the wort. The brewer must hence notify the brew system that the chiller has been sanitized before the power during boil shall be switched off. Note, the boil will continue until this notification has been sent to the 
+* GetStatus - Get brew system status. Provides information about remaining ateps and time in mamsh profile, remaining boil time and overall progress.
 
 ## Roadmap
 
