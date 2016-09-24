@@ -7,11 +7,11 @@ package se.trantor.grpcproto;
  * Protobuf type {@code grpcproto.BrewStatusReply}
  */
 public  final class BrewStatusReply extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:grpcproto.BrewStatusReply)
     BrewStatusReplyOrBuilder {
   // Use BrewStatusReply.newBuilder() to construct.
-  private BrewStatusReply(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private BrewStatusReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private BrewStatusReply() {
@@ -60,7 +60,8 @@ public  final class BrewStatusReply extends
               remainingMashSteps_ = new java.util.ArrayList<se.trantor.grpcproto.MashProfileStep>();
               mutable_bitField0_ |= 0x00000002;
             }
-            remainingMashSteps_.add(input.readMessage(se.trantor.grpcproto.MashProfileStep.parser(), extensionRegistry));
+            remainingMashSteps_.add(
+                input.readMessage(se.trantor.grpcproto.MashProfileStep.parser(), extensionRegistry));
             break;
           }
           case 25: {
@@ -78,7 +79,8 @@ public  final class BrewStatusReply extends
               remainingHopAdditions_ = new java.util.ArrayList<se.trantor.grpcproto.HopAdditionStep>();
               mutable_bitField0_ |= 0x00000010;
             }
-            remainingHopAdditions_.add(input.readMessage(se.trantor.grpcproto.HopAdditionStep.parser(), extensionRegistry));
+            remainingHopAdditions_.add(
+                input.readMessage(se.trantor.grpcproto.HopAdditionStep.parser(), extensionRegistry));
             break;
           }
           case 48: {
@@ -113,7 +115,7 @@ public  final class BrewStatusReply extends
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -133,7 +135,7 @@ public  final class BrewStatusReply extends
    * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
    */
   public se.trantor.grpcproto.BrewStep getCurrentBrewStep() {
-    se.trantor.grpcproto.BrewStep result = se.trantor.grpcproto.BrewStep.forNumber(currentBrewStep_);
+    se.trantor.grpcproto.BrewStep result = se.trantor.grpcproto.BrewStep.valueOf(currentBrewStep_);
     return result == null ? se.trantor.grpcproto.BrewStep.UNRECOGNIZED : result;
   }
 
@@ -316,6 +318,69 @@ public  final class BrewStatusReply extends
   }
 
   private static final long serialVersionUID = 0L;
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof se.trantor.grpcproto.BrewStatusReply)) {
+      return super.equals(obj);
+    }
+    se.trantor.grpcproto.BrewStatusReply other = (se.trantor.grpcproto.BrewStatusReply) obj;
+
+    boolean result = true;
+    result = result && currentBrewStep_ == other.currentBrewStep_;
+    result = result && getRemainingMashStepsList()
+        .equals(other.getRemainingMashStepsList());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getMashTemperature())
+        == java.lang.Double.doubleToLongBits(
+            other.getMashTemperature()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getMashTemperatureSetpoint())
+        == java.lang.Double.doubleToLongBits(
+            other.getMashTemperatureSetpoint()));
+    result = result && getRemainingHopAdditionsList()
+        .equals(other.getRemainingHopAdditionsList());
+    result = result && (getRemainingBoilTime()
+        == other.getRemainingBoilTime());
+    result = result && (getProgress()
+        == other.getProgress());
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (37 * hash) + CURRENT_BREW_STEP_FIELD_NUMBER;
+    hash = (53 * hash) + currentBrewStep_;
+    if (getRemainingMashStepsCount() > 0) {
+      hash = (37 * hash) + REMAINING_MASH_STEPS_FIELD_NUMBER;
+      hash = (53 * hash) + getRemainingMashStepsList().hashCode();
+    }
+    hash = (37 * hash) + MASH_TEMPERATURE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getMashTemperature()));
+    hash = (37 * hash) + MASH_TEMPERATURE_SETPOINT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getMashTemperatureSetpoint()));
+    if (getRemainingHopAdditionsCount() > 0) {
+      hash = (37 * hash) + REMAINING_HOP_ADDITIONS_FIELD_NUMBER;
+      hash = (53 * hash) + getRemainingHopAdditionsList().hashCode();
+    }
+    hash = (37 * hash) + REMAINING_BOIL_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getRemainingBoilTime();
+    hash = (37 * hash) + PROGRESS_FIELD_NUMBER;
+    hash = (53 * hash) + getProgress();
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
   public static se.trantor.grpcproto.BrewStatusReply parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -339,39 +404,39 @@ public  final class BrewStatusReply extends
   }
   public static se.trantor.grpcproto.BrewStatusReply parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.BrewStatusReply parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.BrewStatusReply parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.BrewStatusReply parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.BrewStatusReply parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.BrewStatusReply parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
@@ -389,7 +454,7 @@ public  final class BrewStatusReply extends
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -397,7 +462,7 @@ public  final class BrewStatusReply extends
    * Protobuf type {@code grpcproto.BrewStatusReply}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:grpcproto.BrewStatusReply)
       se.trantor.grpcproto.BrewStatusReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -405,7 +470,7 @@ public  final class BrewStatusReply extends
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_BrewStatusReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -418,12 +483,13 @@ public  final class BrewStatusReply extends
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
         getRemainingMashStepsFieldBuilder();
         getRemainingHopAdditionsFieldBuilder();
       }
@@ -504,6 +570,32 @@ public  final class BrewStatusReply extends
       return result;
     }
 
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof se.trantor.grpcproto.BrewStatusReply) {
         return mergeFrom((se.trantor.grpcproto.BrewStatusReply)other);
@@ -537,7 +629,7 @@ public  final class BrewStatusReply extends
             remainingMashSteps_ = other.remainingMashSteps_;
             bitField0_ = (bitField0_ & ~0x00000002);
             remainingMashStepsBuilder_ = 
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getRemainingMashStepsFieldBuilder() : null;
           } else {
             remainingMashStepsBuilder_.addAllMessages(other.remainingMashSteps_);
@@ -569,7 +661,7 @@ public  final class BrewStatusReply extends
             remainingHopAdditions_ = other.remainingHopAdditions_;
             bitField0_ = (bitField0_ & ~0x00000010);
             remainingHopAdditionsBuilder_ = 
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getRemainingHopAdditionsFieldBuilder() : null;
           } else {
             remainingHopAdditionsBuilder_.addAllMessages(other.remainingHopAdditions_);
@@ -628,7 +720,7 @@ public  final class BrewStatusReply extends
      * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
      */
     public se.trantor.grpcproto.BrewStep getCurrentBrewStep() {
-      se.trantor.grpcproto.BrewStep result = se.trantor.grpcproto.BrewStep.forNumber(currentBrewStep_);
+      se.trantor.grpcproto.BrewStep result = se.trantor.grpcproto.BrewStep.valueOf(currentBrewStep_);
       return result == null ? se.trantor.grpcproto.BrewStep.UNRECOGNIZED : result;
     }
     /**
@@ -662,7 +754,7 @@ public  final class BrewStatusReply extends
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.MashProfileStep, se.trantor.grpcproto.MashProfileStep.Builder, se.trantor.grpcproto.MashProfileStepOrBuilder> remainingMashStepsBuilder_;
 
     /**
@@ -878,11 +970,11 @@ public  final class BrewStatusReply extends
          getRemainingMashStepsBuilderList() {
       return getRemainingMashStepsFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.MashProfileStep, se.trantor.grpcproto.MashProfileStep.Builder, se.trantor.grpcproto.MashProfileStepOrBuilder> 
         getRemainingMashStepsFieldBuilder() {
       if (remainingMashStepsBuilder_ == null) {
-        remainingMashStepsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+        remainingMashStepsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             se.trantor.grpcproto.MashProfileStep, se.trantor.grpcproto.MashProfileStep.Builder, se.trantor.grpcproto.MashProfileStepOrBuilder>(
                 remainingMashSteps_,
                 ((bitField0_ & 0x00000002) == 0x00000002),
@@ -954,7 +1046,7 @@ public  final class BrewStatusReply extends
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.HopAdditionStep, se.trantor.grpcproto.HopAdditionStep.Builder, se.trantor.grpcproto.HopAdditionStepOrBuilder> remainingHopAdditionsBuilder_;
 
     /**
@@ -1170,11 +1262,11 @@ public  final class BrewStatusReply extends
          getRemainingHopAdditionsBuilderList() {
       return getRemainingHopAdditionsFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.HopAdditionStep, se.trantor.grpcproto.HopAdditionStep.Builder, se.trantor.grpcproto.HopAdditionStepOrBuilder> 
         getRemainingHopAdditionsFieldBuilder() {
       if (remainingHopAdditionsBuilder_ == null) {
-        remainingHopAdditionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+        remainingHopAdditionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             se.trantor.grpcproto.HopAdditionStep, se.trantor.grpcproto.HopAdditionStep.Builder, se.trantor.grpcproto.HopAdditionStepOrBuilder>(
                 remainingHopAdditions_,
                 ((bitField0_ & 0x00000010) == 0x00000010),

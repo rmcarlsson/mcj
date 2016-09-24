@@ -7,11 +7,11 @@ package se.trantor.grpcproto;
  * Protobuf type {@code grpcproto.MashProfileStep}
  */
 public  final class MashProfileStep extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:grpcproto.MashProfileStep)
     MashProfileStepOrBuilder {
   // Use MashProfileStep.newBuilder() to construct.
-  private MashProfileStep(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private MashProfileStep(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private MashProfileStep() {
@@ -76,7 +76,7 @@ public  final class MashProfileStep extends
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -155,6 +155,44 @@ public  final class MashProfileStep extends
   }
 
   private static final long serialVersionUID = 0L;
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof se.trantor.grpcproto.MashProfileStep)) {
+      return super.equals(obj);
+    }
+    se.trantor.grpcproto.MashProfileStep other = (se.trantor.grpcproto.MashProfileStep) obj;
+
+    boolean result = true;
+    result = result && (getHeatOverTime()
+        == other.getHeatOverTime());
+    result = result && (getTemperature()
+        == other.getTemperature());
+    result = result && (getStepTime()
+        == other.getStepTime());
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (37 * hash) + HEAT_OVER_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getHeatOverTime();
+    hash = (37 * hash) + TEMPERATURE_FIELD_NUMBER;
+    hash = (53 * hash) + getTemperature();
+    hash = (37 * hash) + STEP_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getStepTime();
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -178,39 +216,39 @@ public  final class MashProfileStep extends
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.MashProfileStep parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.MashProfileStep parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.MashProfileStep parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
@@ -228,7 +266,7 @@ public  final class MashProfileStep extends
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -236,7 +274,7 @@ public  final class MashProfileStep extends
    * Protobuf type {@code grpcproto.MashProfileStep}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:grpcproto.MashProfileStep)
       se.trantor.grpcproto.MashProfileStepOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -244,7 +282,7 @@ public  final class MashProfileStep extends
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_MashProfileStep_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -257,12 +295,13 @@ public  final class MashProfileStep extends
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -302,6 +341,32 @@ public  final class MashProfileStep extends
       return result;
     }
 
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof se.trantor.grpcproto.MashProfileStep) {
         return mergeFrom((se.trantor.grpcproto.MashProfileStep)other);

@@ -7,11 +7,11 @@ package se.trantor.grpcproto;
  * Protobuf type {@code grpcproto.WortChillerSanitizedDoneNotify}
  */
 public  final class WortChillerSanitizedDoneNotify extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:grpcproto.WortChillerSanitizedDoneNotify)
     WortChillerSanitizedDoneNotifyOrBuilder {
   // Use WortChillerSanitizedDoneNotify.newBuilder() to construct.
-  private WortChillerSanitizedDoneNotify(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private WortChillerSanitizedDoneNotify(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private WortChillerSanitizedDoneNotify() {
@@ -64,7 +64,7 @@ public  final class WortChillerSanitizedDoneNotify extends
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_WortChillerSanitizedDoneNotify_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_WortChillerSanitizedDoneNotify_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -111,6 +111,36 @@ public  final class WortChillerSanitizedDoneNotify extends
   }
 
   private static final long serialVersionUID = 0L;
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof se.trantor.grpcproto.WortChillerSanitizedDoneNotify)) {
+      return super.equals(obj);
+    }
+    se.trantor.grpcproto.WortChillerSanitizedDoneNotify other = (se.trantor.grpcproto.WortChillerSanitizedDoneNotify) obj;
+
+    boolean result = true;
+    result = result && (getId()
+        == other.getId());
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId();
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -134,39 +164,39 @@ public  final class WortChillerSanitizedDoneNotify extends
   }
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.WortChillerSanitizedDoneNotify parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
@@ -184,7 +214,7 @@ public  final class WortChillerSanitizedDoneNotify extends
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -192,7 +222,7 @@ public  final class WortChillerSanitizedDoneNotify extends
    * Protobuf type {@code grpcproto.WortChillerSanitizedDoneNotify}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:grpcproto.WortChillerSanitizedDoneNotify)
       se.trantor.grpcproto.WortChillerSanitizedDoneNotifyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -200,7 +230,7 @@ public  final class WortChillerSanitizedDoneNotify extends
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_WortChillerSanitizedDoneNotify_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_WortChillerSanitizedDoneNotify_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -213,12 +243,13 @@ public  final class WortChillerSanitizedDoneNotify extends
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -252,6 +283,32 @@ public  final class WortChillerSanitizedDoneNotify extends
       return result;
     }
 
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof se.trantor.grpcproto.WortChillerSanitizedDoneNotify) {
         return mergeFrom((se.trantor.grpcproto.WortChillerSanitizedDoneNotify)other);

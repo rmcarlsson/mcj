@@ -7,17 +7,19 @@ package se.trantor.grpcproto;
  * Protobuf type {@code grpcproto.LoadBrewProfileRequest}
  */
 public  final class LoadBrewProfileRequest extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:grpcproto.LoadBrewProfileRequest)
     LoadBrewProfileRequestOrBuilder {
   // Use LoadBrewProfileRequest.newBuilder() to construct.
-  private LoadBrewProfileRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private LoadBrewProfileRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private LoadBrewProfileRequest() {
     mashProfileSteps_ = java.util.Collections.emptyList();
     hopAdditionStep_ = java.util.Collections.emptyList();
     boilTime_ = 0;
+    mashWaterVolume_ = 0D;
+    grainbillWeight_ = 0D;
   }
 
   @java.lang.Override
@@ -50,7 +52,8 @@ public  final class LoadBrewProfileRequest extends
               mashProfileSteps_ = new java.util.ArrayList<se.trantor.grpcproto.MashProfileStep>();
               mutable_bitField0_ |= 0x00000001;
             }
-            mashProfileSteps_.add(input.readMessage(se.trantor.grpcproto.MashProfileStep.parser(), extensionRegistry));
+            mashProfileSteps_.add(
+                input.readMessage(se.trantor.grpcproto.MashProfileStep.parser(), extensionRegistry));
             break;
           }
           case 18: {
@@ -58,12 +61,23 @@ public  final class LoadBrewProfileRequest extends
               hopAdditionStep_ = new java.util.ArrayList<se.trantor.grpcproto.HopAdditionStep>();
               mutable_bitField0_ |= 0x00000002;
             }
-            hopAdditionStep_.add(input.readMessage(se.trantor.grpcproto.HopAdditionStep.parser(), extensionRegistry));
+            hopAdditionStep_.add(
+                input.readMessage(se.trantor.grpcproto.HopAdditionStep.parser(), extensionRegistry));
             break;
           }
           case 24: {
 
             boilTime_ = input.readInt32();
+            break;
+          }
+          case 33: {
+
+            mashWaterVolume_ = input.readDouble();
+            break;
+          }
+          case 41: {
+
+            grainbillWeight_ = input.readDouble();
             break;
           }
         }
@@ -88,7 +102,7 @@ public  final class LoadBrewProfileRequest extends
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -175,6 +189,24 @@ public  final class LoadBrewProfileRequest extends
     return boilTime_;
   }
 
+  public static final int MASH_WATER_VOLUME_FIELD_NUMBER = 4;
+  private double mashWaterVolume_;
+  /**
+   * <code>optional double mash_water_volume = 4;</code>
+   */
+  public double getMashWaterVolume() {
+    return mashWaterVolume_;
+  }
+
+  public static final int GRAINBILL_WEIGHT_FIELD_NUMBER = 5;
+  private double grainbillWeight_;
+  /**
+   * <code>optional double grainbill_weight = 5;</code>
+   */
+  public double getGrainbillWeight() {
+    return grainbillWeight_;
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -196,6 +228,12 @@ public  final class LoadBrewProfileRequest extends
     if (boilTime_ != 0) {
       output.writeInt32(3, boilTime_);
     }
+    if (mashWaterVolume_ != 0D) {
+      output.writeDouble(4, mashWaterVolume_);
+    }
+    if (grainbillWeight_ != 0D) {
+      output.writeDouble(5, grainbillWeight_);
+    }
   }
 
   public int getSerializedSize() {
@@ -215,11 +253,75 @@ public  final class LoadBrewProfileRequest extends
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, boilTime_);
     }
+    if (mashWaterVolume_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(4, mashWaterVolume_);
+    }
+    if (grainbillWeight_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(5, grainbillWeight_);
+    }
     memoizedSize = size;
     return size;
   }
 
   private static final long serialVersionUID = 0L;
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof se.trantor.grpcproto.LoadBrewProfileRequest)) {
+      return super.equals(obj);
+    }
+    se.trantor.grpcproto.LoadBrewProfileRequest other = (se.trantor.grpcproto.LoadBrewProfileRequest) obj;
+
+    boolean result = true;
+    result = result && getMashProfileStepsList()
+        .equals(other.getMashProfileStepsList());
+    result = result && getHopAdditionStepList()
+        .equals(other.getHopAdditionStepList());
+    result = result && (getBoilTime()
+        == other.getBoilTime());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getMashWaterVolume())
+        == java.lang.Double.doubleToLongBits(
+            other.getMashWaterVolume()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getGrainbillWeight())
+        == java.lang.Double.doubleToLongBits(
+            other.getGrainbillWeight()));
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptorForType().hashCode();
+    if (getMashProfileStepsCount() > 0) {
+      hash = (37 * hash) + MASH_PROFILE_STEPS_FIELD_NUMBER;
+      hash = (53 * hash) + getMashProfileStepsList().hashCode();
+    }
+    if (getHopAdditionStepCount() > 0) {
+      hash = (37 * hash) + HOP_ADDITION_STEP_FIELD_NUMBER;
+      hash = (53 * hash) + getHopAdditionStepList().hashCode();
+    }
+    hash = (37 * hash) + BOIL_TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getBoilTime();
+    hash = (37 * hash) + MASH_WATER_VOLUME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getMashWaterVolume()));
+    hash = (37 * hash) + GRAINBILL_WEIGHT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getGrainbillWeight()));
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -243,39 +345,39 @@ public  final class LoadBrewProfileRequest extends
   }
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.LoadBrewProfileRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
@@ -293,7 +395,7 @@ public  final class LoadBrewProfileRequest extends
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -301,7 +403,7 @@ public  final class LoadBrewProfileRequest extends
    * Protobuf type {@code grpcproto.LoadBrewProfileRequest}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:grpcproto.LoadBrewProfileRequest)
       se.trantor.grpcproto.LoadBrewProfileRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -309,7 +411,7 @@ public  final class LoadBrewProfileRequest extends
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_LoadBrewProfileRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -322,12 +424,13 @@ public  final class LoadBrewProfileRequest extends
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
         getMashProfileStepsFieldBuilder();
         getHopAdditionStepFieldBuilder();
       }
@@ -347,6 +450,10 @@ public  final class LoadBrewProfileRequest extends
         hopAdditionStepBuilder_.clear();
       }
       boilTime_ = 0;
+
+      mashWaterVolume_ = 0D;
+
+      grainbillWeight_ = 0D;
 
       return this;
     }
@@ -391,11 +498,39 @@ public  final class LoadBrewProfileRequest extends
         result.hopAdditionStep_ = hopAdditionStepBuilder_.build();
       }
       result.boilTime_ = boilTime_;
+      result.mashWaterVolume_ = mashWaterVolume_;
+      result.grainbillWeight_ = grainbillWeight_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
 
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof se.trantor.grpcproto.LoadBrewProfileRequest) {
         return mergeFrom((se.trantor.grpcproto.LoadBrewProfileRequest)other);
@@ -426,7 +561,7 @@ public  final class LoadBrewProfileRequest extends
             mashProfileSteps_ = other.mashProfileSteps_;
             bitField0_ = (bitField0_ & ~0x00000001);
             mashProfileStepsBuilder_ = 
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getMashProfileStepsFieldBuilder() : null;
           } else {
             mashProfileStepsBuilder_.addAllMessages(other.mashProfileSteps_);
@@ -452,7 +587,7 @@ public  final class LoadBrewProfileRequest extends
             hopAdditionStep_ = other.hopAdditionStep_;
             bitField0_ = (bitField0_ & ~0x00000002);
             hopAdditionStepBuilder_ = 
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getHopAdditionStepFieldBuilder() : null;
           } else {
             hopAdditionStepBuilder_.addAllMessages(other.hopAdditionStep_);
@@ -461,6 +596,12 @@ public  final class LoadBrewProfileRequest extends
       }
       if (other.getBoilTime() != 0) {
         setBoilTime(other.getBoilTime());
+      }
+      if (other.getMashWaterVolume() != 0D) {
+        setMashWaterVolume(other.getMashWaterVolume());
+      }
+      if (other.getGrainbillWeight() != 0D) {
+        setGrainbillWeight(other.getGrainbillWeight());
       }
       onChanged();
       return this;
@@ -498,7 +639,7 @@ public  final class LoadBrewProfileRequest extends
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.MashProfileStep, se.trantor.grpcproto.MashProfileStep.Builder, se.trantor.grpcproto.MashProfileStepOrBuilder> mashProfileStepsBuilder_;
 
     /**
@@ -714,11 +855,11 @@ public  final class LoadBrewProfileRequest extends
          getMashProfileStepsBuilderList() {
       return getMashProfileStepsFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.MashProfileStep, se.trantor.grpcproto.MashProfileStep.Builder, se.trantor.grpcproto.MashProfileStepOrBuilder> 
         getMashProfileStepsFieldBuilder() {
       if (mashProfileStepsBuilder_ == null) {
-        mashProfileStepsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+        mashProfileStepsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             se.trantor.grpcproto.MashProfileStep, se.trantor.grpcproto.MashProfileStep.Builder, se.trantor.grpcproto.MashProfileStepOrBuilder>(
                 mashProfileSteps_,
                 ((bitField0_ & 0x00000001) == 0x00000001),
@@ -738,7 +879,7 @@ public  final class LoadBrewProfileRequest extends
        }
     }
 
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.HopAdditionStep, se.trantor.grpcproto.HopAdditionStep.Builder, se.trantor.grpcproto.HopAdditionStepOrBuilder> hopAdditionStepBuilder_;
 
     /**
@@ -954,11 +1095,11 @@ public  final class LoadBrewProfileRequest extends
          getHopAdditionStepBuilderList() {
       return getHopAdditionStepFieldBuilder().getBuilderList();
     }
-    private com.google.protobuf.RepeatedFieldBuilder<
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         se.trantor.grpcproto.HopAdditionStep, se.trantor.grpcproto.HopAdditionStep.Builder, se.trantor.grpcproto.HopAdditionStepOrBuilder> 
         getHopAdditionStepFieldBuilder() {
       if (hopAdditionStepBuilder_ == null) {
-        hopAdditionStepBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+        hopAdditionStepBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             se.trantor.grpcproto.HopAdditionStep, se.trantor.grpcproto.HopAdditionStep.Builder, se.trantor.grpcproto.HopAdditionStepOrBuilder>(
                 hopAdditionStep_,
                 ((bitField0_ & 0x00000002) == 0x00000002),
@@ -991,6 +1132,58 @@ public  final class LoadBrewProfileRequest extends
     public Builder clearBoilTime() {
       
       boilTime_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private double mashWaterVolume_ ;
+    /**
+     * <code>optional double mash_water_volume = 4;</code>
+     */
+    public double getMashWaterVolume() {
+      return mashWaterVolume_;
+    }
+    /**
+     * <code>optional double mash_water_volume = 4;</code>
+     */
+    public Builder setMashWaterVolume(double value) {
+      
+      mashWaterVolume_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional double mash_water_volume = 4;</code>
+     */
+    public Builder clearMashWaterVolume() {
+      
+      mashWaterVolume_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double grainbillWeight_ ;
+    /**
+     * <code>optional double grainbill_weight = 5;</code>
+     */
+    public double getGrainbillWeight() {
+      return grainbillWeight_;
+    }
+    /**
+     * <code>optional double grainbill_weight = 5;</code>
+     */
+    public Builder setGrainbillWeight(double value) {
+      
+      grainbillWeight_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional double grainbill_weight = 5;</code>
+     */
+    public Builder clearGrainbillWeight() {
+      
+      grainbillWeight_ = 0D;
       onChanged();
       return this;
     }

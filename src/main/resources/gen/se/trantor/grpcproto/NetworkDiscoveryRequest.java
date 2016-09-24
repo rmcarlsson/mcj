@@ -7,11 +7,11 @@ package se.trantor.grpcproto;
  * Protobuf type {@code grpcproto.NetworkDiscoveryRequest}
  */
 public  final class NetworkDiscoveryRequest extends
-    com.google.protobuf.GeneratedMessage implements
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:grpcproto.NetworkDiscoveryRequest)
     NetworkDiscoveryRequestOrBuilder {
   // Use NetworkDiscoveryRequest.newBuilder() to construct.
-  private NetworkDiscoveryRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  private NetworkDiscoveryRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private NetworkDiscoveryRequest() {
@@ -65,7 +65,7 @@ public  final class NetworkDiscoveryRequest extends
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
   }
 
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
@@ -119,7 +119,7 @@ public  final class NetworkDiscoveryRequest extends
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
   }
 
@@ -129,13 +129,43 @@ public  final class NetworkDiscoveryRequest extends
 
     size = 0;
     if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
     memoizedSize = size;
     return size;
   }
 
   private static final long serialVersionUID = 0L;
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof se.trantor.grpcproto.NetworkDiscoveryRequest)) {
+      return super.equals(obj);
+    }
+    se.trantor.grpcproto.NetworkDiscoveryRequest other = (se.trantor.grpcproto.NetworkDiscoveryRequest) obj;
+
+    boolean result = true;
+    result = result && getName()
+        .equals(other.getName());
+    return result;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -159,39 +189,39 @@ public  final class NetworkDiscoveryRequest extends
   }
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
   public static se.trantor.grpcproto.NetworkDiscoveryRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
+    return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
@@ -209,7 +239,7 @@ public  final class NetworkDiscoveryRequest extends
 
   @java.lang.Override
   protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
@@ -217,7 +247,7 @@ public  final class NetworkDiscoveryRequest extends
    * Protobuf type {@code grpcproto.NetworkDiscoveryRequest}
    */
   public static final class Builder extends
-      com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:grpcproto.NetworkDiscoveryRequest)
       se.trantor.grpcproto.NetworkDiscoveryRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -225,7 +255,7 @@ public  final class NetworkDiscoveryRequest extends
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return se.trantor.grpcproto.GrainbrainProto.internal_static_grpcproto_NetworkDiscoveryRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -238,12 +268,13 @@ public  final class NetworkDiscoveryRequest extends
     }
 
     private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
       }
     }
     public Builder clear() {
@@ -277,6 +308,32 @@ public  final class NetworkDiscoveryRequest extends
       return result;
     }
 
+    public Builder clone() {
+      return (Builder) super.clone();
+    }
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.setField(field, value);
+    }
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return (Builder) super.clearField(field);
+    }
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return (Builder) super.clearOneof(oneof);
+    }
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, Object value) {
+      return (Builder) super.setRepeatedField(field, index, value);
+    }
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        Object value) {
+      return (Builder) super.addRepeatedField(field, value);
+    }
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof se.trantor.grpcproto.NetworkDiscoveryRequest) {
         return mergeFrom((se.trantor.grpcproto.NetworkDiscoveryRequest)other);

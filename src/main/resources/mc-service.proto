@@ -89,6 +89,8 @@ message LoadBrewProfileRequest {
 	repeated MashProfileStep mash_profile_steps = 1;
 	repeated HopAdditionStep hop_addition_step = 2;
 	int32 boil_time = 3;
+	double mash_water_volume = 4;
+	double grainbill_weight = 5;
 }
 
 

@@ -18,7 +18,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 0.15.0)",
+    value = "by gRPC proto compiler (version 1.0.1)",
     comments = "Source: mc-service.proto")
 public class McServerGrpc {
 
@@ -107,149 +107,101 @@ public class McServerGrpc {
 
   /**
    */
-  @java.lang.Deprecated public static interface McServer {
+  public static abstract class McServerImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void loadBrewProfile(se.trantor.grpcproto.LoadBrewProfileRequest request,
-        io.grpc.stub.StreamObserver<se.trantor.grpcproto.SuccessReply> responseObserver);
-
-    /**
-     */
-    public void startStopAbort(se.trantor.grpcproto.StartStopRequest request,
-        io.grpc.stub.StreamObserver<se.trantor.grpcproto.SuccessReply> responseObserver);
-
-    /**
-     */
-    public void grainsAdded(se.trantor.grpcproto.GrainsAddedNotify request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver);
-
-    /**
-     */
-    public void spargeDone(se.trantor.grpcproto.SpargeDoneNotify request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver);
-
-    /**
-     */
-    public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver);
-
-    /**
-     */
-    public void getStatus(com.google.protobuf.Empty request,
-        io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver);
-  }
-
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1469")
-  public static abstract class McServerImplBase implements McServer, io.grpc.BindableService {
-
-    @java.lang.Override
     public void loadBrewProfile(se.trantor.grpcproto.LoadBrewProfileRequest request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.SuccessReply> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_LOAD_BREW_PROFILE, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void startStopAbort(se.trantor.grpcproto.StartStopRequest request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.SuccessReply> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_START_STOP_ABORT, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void grainsAdded(se.trantor.grpcproto.GrainsAddedNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_GRAINS_ADDED, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void spargeDone(se.trantor.grpcproto.SpargeDoneNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_SPARGE_DONE, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_WORT_CHILLER_SANITIZED_DONE, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void getStatus(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_GET_STATUS, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
-      return McServerGrpc.bindService(this);
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            METHOD_LOAD_BREW_PROFILE,
+            asyncUnaryCall(
+              new MethodHandlers<
+                se.trantor.grpcproto.LoadBrewProfileRequest,
+                se.trantor.grpcproto.SuccessReply>(
+                  this, METHODID_LOAD_BREW_PROFILE)))
+          .addMethod(
+            METHOD_START_STOP_ABORT,
+            asyncUnaryCall(
+              new MethodHandlers<
+                se.trantor.grpcproto.StartStopRequest,
+                se.trantor.grpcproto.SuccessReply>(
+                  this, METHODID_START_STOP_ABORT)))
+          .addMethod(
+            METHOD_GRAINS_ADDED,
+            asyncUnaryCall(
+              new MethodHandlers<
+                se.trantor.grpcproto.GrainsAddedNotify,
+                com.google.protobuf.Empty>(
+                  this, METHODID_GRAINS_ADDED)))
+          .addMethod(
+            METHOD_SPARGE_DONE,
+            asyncUnaryCall(
+              new MethodHandlers<
+                se.trantor.grpcproto.SpargeDoneNotify,
+                com.google.protobuf.Empty>(
+                  this, METHODID_SPARGE_DONE)))
+          .addMethod(
+            METHOD_WORT_CHILLER_SANITIZED_DONE,
+            asyncUnaryCall(
+              new MethodHandlers<
+                se.trantor.grpcproto.WortChillerSanitizedDoneNotify,
+                com.google.protobuf.Empty>(
+                  this, METHODID_WORT_CHILLER_SANITIZED_DONE)))
+          .addMethod(
+            METHOD_GET_STATUS,
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.google.protobuf.Empty,
+                se.trantor.grpcproto.BrewStatusReply>(
+                  this, METHODID_GET_STATUS)))
+          .build();
     }
   }
 
   /**
    */
-  @java.lang.Deprecated public static interface McServerBlockingClient {
-
-    /**
-     */
-    public se.trantor.grpcproto.SuccessReply loadBrewProfile(se.trantor.grpcproto.LoadBrewProfileRequest request);
-
-    /**
-     */
-    public se.trantor.grpcproto.SuccessReply startStopAbort(se.trantor.grpcproto.StartStopRequest request);
-
-    /**
-     */
-    public com.google.protobuf.Empty grainsAdded(se.trantor.grpcproto.GrainsAddedNotify request);
-
-    /**
-     */
-    public com.google.protobuf.Empty spargeDone(se.trantor.grpcproto.SpargeDoneNotify request);
-
-    /**
-     */
-    public com.google.protobuf.Empty wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request);
-
-    /**
-     */
-    public se.trantor.grpcproto.BrewStatusReply getStatus(com.google.protobuf.Empty request);
-  }
-
-  /**
-   */
-  @java.lang.Deprecated public static interface McServerFutureClient {
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.SuccessReply> loadBrewProfile(
-        se.trantor.grpcproto.LoadBrewProfileRequest request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.SuccessReply> startStopAbort(
-        se.trantor.grpcproto.StartStopRequest request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> grainsAdded(
-        se.trantor.grpcproto.GrainsAddedNotify request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> spargeDone(
-        se.trantor.grpcproto.SpargeDoneNotify request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> wortChillerSanitizedDone(
-        se.trantor.grpcproto.WortChillerSanitizedDoneNotify request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.BrewStatusReply> getStatus(
-        com.google.protobuf.Empty request);
-  }
-
-  public static class McServerStub extends io.grpc.stub.AbstractStub<McServerStub>
-      implements McServer {
+  public static final class McServerStub extends io.grpc.stub.AbstractStub<McServerStub> {
     private McServerStub(io.grpc.Channel channel) {
       super(channel);
     }
@@ -265,42 +217,48 @@ public class McServerGrpc {
       return new McServerStub(channel, callOptions);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void loadBrewProfile(se.trantor.grpcproto.LoadBrewProfileRequest request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.SuccessReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_LOAD_BREW_PROFILE, getCallOptions()), request, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void startStopAbort(se.trantor.grpcproto.StartStopRequest request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.SuccessReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_START_STOP_ABORT, getCallOptions()), request, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void grainsAdded(se.trantor.grpcproto.GrainsAddedNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_GRAINS_ADDED, getCallOptions()), request, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void spargeDone(se.trantor.grpcproto.SpargeDoneNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_SPARGE_DONE, getCallOptions()), request, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_WORT_CHILLER_SANITIZED_DONE, getCallOptions()), request, responseObserver);
     }
 
-    @java.lang.Override
+    /**
+     */
     public void getStatus(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver) {
       asyncUnaryCall(
@@ -308,8 +266,9 @@ public class McServerGrpc {
     }
   }
 
-  public static class McServerBlockingStub extends io.grpc.stub.AbstractStub<McServerBlockingStub>
-      implements McServerBlockingClient {
+  /**
+   */
+  public static final class McServerBlockingStub extends io.grpc.stub.AbstractStub<McServerBlockingStub> {
     private McServerBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
@@ -325,45 +284,52 @@ public class McServerGrpc {
       return new McServerBlockingStub(channel, callOptions);
     }
 
-    @java.lang.Override
+    /**
+     */
     public se.trantor.grpcproto.SuccessReply loadBrewProfile(se.trantor.grpcproto.LoadBrewProfileRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_LOAD_BREW_PROFILE, getCallOptions(), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public se.trantor.grpcproto.SuccessReply startStopAbort(se.trantor.grpcproto.StartStopRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_START_STOP_ABORT, getCallOptions(), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.protobuf.Empty grainsAdded(se.trantor.grpcproto.GrainsAddedNotify request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GRAINS_ADDED, getCallOptions(), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.protobuf.Empty spargeDone(se.trantor.grpcproto.SpargeDoneNotify request) {
       return blockingUnaryCall(
           getChannel(), METHOD_SPARGE_DONE, getCallOptions(), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.protobuf.Empty wortChillerSanitizedDone(se.trantor.grpcproto.WortChillerSanitizedDoneNotify request) {
       return blockingUnaryCall(
           getChannel(), METHOD_WORT_CHILLER_SANITIZED_DONE, getCallOptions(), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public se.trantor.grpcproto.BrewStatusReply getStatus(com.google.protobuf.Empty request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GET_STATUS, getCallOptions(), request);
     }
   }
 
-  public static class McServerFutureStub extends io.grpc.stub.AbstractStub<McServerFutureStub>
-      implements McServerFutureClient {
+  /**
+   */
+  public static final class McServerFutureStub extends io.grpc.stub.AbstractStub<McServerFutureStub> {
     private McServerFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
@@ -379,50 +345,54 @@ public class McServerGrpc {
       return new McServerFutureStub(channel, callOptions);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.SuccessReply> loadBrewProfile(
         se.trantor.grpcproto.LoadBrewProfileRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_LOAD_BREW_PROFILE, getCallOptions()), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.SuccessReply> startStopAbort(
         se.trantor.grpcproto.StartStopRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_START_STOP_ABORT, getCallOptions()), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> grainsAdded(
         se.trantor.grpcproto.GrainsAddedNotify request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GRAINS_ADDED, getCallOptions()), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> spargeDone(
         se.trantor.grpcproto.SpargeDoneNotify request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_SPARGE_DONE, getCallOptions()), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> wortChillerSanitizedDone(
         se.trantor.grpcproto.WortChillerSanitizedDoneNotify request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_WORT_CHILLER_SANITIZED_DONE, getCallOptions()), request);
     }
 
-    @java.lang.Override
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<se.trantor.grpcproto.BrewStatusReply> getStatus(
         com.google.protobuf.Empty request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GET_STATUS, getCallOptions()), request);
     }
   }
-
-  @java.lang.Deprecated public static abstract class AbstractMcServer extends McServerImplBase {}
 
   private static final int METHODID_LOAD_BREW_PROFILE = 0;
   private static final int METHODID_START_STOP_ABORT = 1;
@@ -436,10 +406,10 @@ public class McServerGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final McServer serviceImpl;
+    private final McServerImplBase serviceImpl;
     private final int methodId;
 
-    public MethodHandlers(McServer serviceImpl, int methodId) {
+    public MethodHandlers(McServerImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -498,51 +468,4 @@ public class McServerGrpc {
         METHOD_GET_STATUS);
   }
 
-  @java.lang.Deprecated public static io.grpc.ServerServiceDefinition bindService(
-      final McServer serviceImpl) {
-    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          METHOD_LOAD_BREW_PROFILE,
-          asyncUnaryCall(
-            new MethodHandlers<
-              se.trantor.grpcproto.LoadBrewProfileRequest,
-              se.trantor.grpcproto.SuccessReply>(
-                serviceImpl, METHODID_LOAD_BREW_PROFILE)))
-        .addMethod(
-          METHOD_START_STOP_ABORT,
-          asyncUnaryCall(
-            new MethodHandlers<
-              se.trantor.grpcproto.StartStopRequest,
-              se.trantor.grpcproto.SuccessReply>(
-                serviceImpl, METHODID_START_STOP_ABORT)))
-        .addMethod(
-          METHOD_GRAINS_ADDED,
-          asyncUnaryCall(
-            new MethodHandlers<
-              se.trantor.grpcproto.GrainsAddedNotify,
-              com.google.protobuf.Empty>(
-                serviceImpl, METHODID_GRAINS_ADDED)))
-        .addMethod(
-          METHOD_SPARGE_DONE,
-          asyncUnaryCall(
-            new MethodHandlers<
-              se.trantor.grpcproto.SpargeDoneNotify,
-              com.google.protobuf.Empty>(
-                serviceImpl, METHODID_SPARGE_DONE)))
-        .addMethod(
-          METHOD_WORT_CHILLER_SANITIZED_DONE,
-          asyncUnaryCall(
-            new MethodHandlers<
-              se.trantor.grpcproto.WortChillerSanitizedDoneNotify,
-              com.google.protobuf.Empty>(
-                serviceImpl, METHODID_WORT_CHILLER_SANITIZED_DONE)))
-        .addMethod(
-          METHOD_GET_STATUS,
-          asyncUnaryCall(
-            new MethodHandlers<
-              com.google.protobuf.Empty,
-              se.trantor.grpcproto.BrewStatusReply>(
-                serviceImpl, METHODID_GET_STATUS)))
-        .build();
-  }
 }

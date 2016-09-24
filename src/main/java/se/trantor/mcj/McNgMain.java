@@ -42,7 +42,7 @@ public class McNgMain {
 
 	@SuppressWarnings("deprecation")
 	public void start() throws IOException {
-		server = ServerBuilder.forPort(port).addService(McServerGrpc.bindService(new McServerImpl())).build().start();
+		server = ServerBuilder.forPort(port).addService(new McServerImpl()).build();
 		//		server = ServerBuilder.forPort(port).addService(new McServerImpl()).build().start();
 		logger.info("Server started, listening on " + port);
 
@@ -95,7 +95,7 @@ public class McNgMain {
 	 * Main launches the server from the command line.
 	 */
 
-	private class McServerImpl extends McServerGrpc.AbstractMcServer {
+	private class McServerImpl extends McServerGrpc.McServerImplBase {
 
 
 		private int boilTime;
