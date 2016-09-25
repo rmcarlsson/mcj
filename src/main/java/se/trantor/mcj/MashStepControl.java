@@ -32,11 +32,12 @@ public class MashStepControl implements Runnable {
 
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 
-	public MashStepControl(ArrayList<MashStep> aMashProfile) {
+	public MashStepControl(ArrayList<MashStep> aMashProfile, PidController aPidController) {
 		state = MashControlStateE.INIT;
 		grainsAdded = false;
 		stepIx = 0;
 		mashStepProfile = aMashProfile;
+		pidController  = aPidController;
 	}
 
 	public void SetGrainsAdded(boolean aGrainAddedIndication) {
@@ -207,7 +208,6 @@ public class MashStepControl implements Runnable {
 		try {
 
 			Heater heater = HeaterSingleton.getInstance();
-			pidController = new PidController();
 
 			temperature = TemperatureSingleton.getInstance();
 			running = true;

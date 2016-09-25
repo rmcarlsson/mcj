@@ -15,6 +15,8 @@ public class BrewController implements Runnable{
 	private ArrayList<MashStep> mashProfile = new ArrayList<MashStep>();
 	private ArrayList<HopAddition> hopAdditions = new ArrayList<HopAddition>();
 	private int boilTime;
+	private double mashWaterVolume;
+	private double grainbillWeight;
 	private MashStepControl msc;
 	private boolean spargeDone;
 	private BoilController bc;
@@ -26,11 +28,14 @@ public class BrewController implements Runnable{
 
 	public BrewController(ArrayList<MashStep> aMashProfile, 
 			ArrayList<HopAddition> aHopAdditionList, 
-			int aBoilTime )
+			int aBoilTime,
+			double aMashWaterVolume, double aGrainbillWeight)
 	{
 		boilTime = aBoilTime;
 		hopAdditions = aHopAdditionList;
 		mashProfile = aMashProfile;
+		mashWaterVolume = aMashWaterVolume;
+		grainbillWeight = aGrainbillWeight;
 	}
 
 
@@ -43,7 +48,7 @@ public class BrewController implements Runnable{
 			{
 				state = stateE.MASHING;
 			
-				msc = new MashStepControl(mashProfile);
+				msc = new MashStepControl(mashProfile, new PidController(mashWaterVolume, grainbillWeight));
 				tMc = new Thread(msc);
 				tMc.start();		
 				tMc.join();

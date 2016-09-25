@@ -9,6 +9,9 @@ public class PidController {
 	private double kp = 84.8828;
 	private double ki = 0.038627586;
 	private double kd = 41968.58689;
+	
+	private double grainbillWeight;
+	private double mashWaterVolume;
 
 	double l_p, l_i, l_d = 0;
 
@@ -27,7 +30,7 @@ public class PidController {
 	
 
 
-	public PidController() {
+	public PidController(double aMashWaterVolume, double aGrainbillWeight) {
 		inAuto = false;
 
 		SetOutputLimits(0, Heater.MAX_POWER); // default output limit corresponds to
@@ -38,6 +41,9 @@ public class PidController {
 		SetTunings(kp, ki, kd);
 		
 		state = stateE.BINARY_MODE;
+		
+		mashWaterVolume = aMashWaterVolume;
+		grainbillWeight = aGrainbillWeight;
 	}
 
 	public void SetSetPoint(double aSetPoint)

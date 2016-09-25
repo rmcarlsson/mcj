@@ -99,6 +99,8 @@ public class McNgMain {
 
 
 		private int boilTime;
+		private double mashWaterVolume;
+		private double grainbillWeight;
 		private ArrayList<HopAddition> hopAdditions;
 		private BrewController bc;
 		private Thread tBc;
@@ -134,6 +136,13 @@ public class McNgMain {
 
 			boilTime = request.getBoilTime();
 			logger.log(Level.INFO, "Boil time is {0}", boilTime);
+			
+			grainbillWeight = request.getGrainbillWeight();
+			logger.log(Level.INFO, "GrainbillWeight is {0}", grainbillWeight);
+
+			mashWaterVolume = request.getMashWaterVolume();
+			logger.log(Level.INFO, "Mash water volume is {0}", mashWaterVolume);
+
 
 			SuccessReply reply = SuccessReply.newBuilder().setSuccess(Success.OK).build();
 			responseObserver.onNext(reply);
@@ -159,7 +168,7 @@ public class McNgMain {
 				else
 				{
 					logger.log(Level.INFO, "Start request");
-					bc = new BrewController(mashStepList, new ArrayList<HopAddition>(), boilTime);
+					bc = new BrewController(mashStepList, new ArrayList<HopAddition>(), boilTime, mashWaterVolume, grainbillWeight);
 					tBc = new Thread(bc);
 					tBc.start();
 					rplb.setSuccess(se.trantor.grpcproto.SuccessReply.Success.OK);
