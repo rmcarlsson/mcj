@@ -38,7 +38,6 @@ public class BrewController implements Runnable{
 		grainbillWeight = aGrainbillWeight;
 	}
 
-
 	public void run() {
 		Thread tMc = null;
 		Thread tBc = null;

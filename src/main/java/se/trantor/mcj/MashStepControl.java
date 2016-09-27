@@ -27,7 +27,6 @@ public class MashStepControl implements Runnable {
 	private MashStep currMashStep;
 
 	private Date stepStartTime;
-	private double dtemp_dt;
 	double mashTemp;
 
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
@@ -83,24 +82,23 @@ public class MashStepControl implements Runnable {
 
 
 				if (currMashStep.HeatOverTime != 0) { 
-					// Reset integrator with new value based on temperature derivate.
-					float timeBase = (TimeUnit.MINUTES.toSeconds(currMashStep.HeatOverTime) * 5); 
-					dtemp_dt = (currMashStep.Temperature - mashTemp)/timeBase;
-					// Prepare and set new state.
 					
 					// <########## STATE transition STEP_MASHING -> HEAT_OVER_MASHING ##########>
 					state = MashControlStateE.HEAT_OVER_MASHING;
 					
+					// Transition action
+					logger.log(Level.FINE,
+							"Update setpoint to {0} C to hold heat over temperature.", mashTemp);
+					pidController.SetSetPoint(mashTemp, currMashStep.Temperature, currMashStep.HeatOverTime);
+
 				} else {
+					// <########## STATE transition STEP_MASHING -> HEATING ##########>
+					state = MashControlStateE.HEATING;
 					
-					//
 					stepStartTime = new Date();
 
 					pidController.SetSetPoint(currMashStep.Temperature);
 					logger.log(Level.INFO, "Starting next step. Heating to {0} C", currMashStep.Temperature);
-
-					// <########## STATE transition STEP_MASHING -> HEATING ##########>
-					state = MashControlStateE.HEATING;
 				}
 
 			} else {
@@ -156,6 +154,7 @@ public class MashStepControl implements Runnable {
 			break;
 		case HEAT_OVER_MASHING:
 			handle_heat_over_mashing();
+			break;
 		case STEP_MASHING:
 			handle_step_mashing();
 			break;
@@ -172,12 +171,6 @@ public class MashStepControl implements Runnable {
 	
 	private void handle_heat_over_mashing() {
 
-		mashTemp += dtemp_dt;
-
-		pidController.SetSetPoint(mashTemp);
-		logger.log(Level.FINE,
-				"Update setpoint to {0} C to hold heat over temperature.", mashTemp);
-		pidController.SetSetPoint(mashTemp);
 
 		// The step in the mashing is done. What next?
 		if (mashTemp >= currMashStep.Temperature) {
