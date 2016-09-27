@@ -1,5 +1,6 @@
 package se.trantor.mcj;
 
+import java.text.MessageFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,10 +71,11 @@ public class PidController {
 		double dT = (aSetPoint - aCurrValue) / aHeatOverTime * 60;
 		ITerm = dT * (HC_W * mashWaterVolume + HC_G * grainbillWeight);
 
-		// Calulate setpoint time steps
+		// Calculate set point time steps
 		setpointStep = dT * Heater.PERIOD / 1000;
 
-		logger.log(Level.INFO, "New setpoint {0}", aSetPoint);
+		logger.log(Level.INFO, MessageFormat.format("New setpoint. Moving from {0} to {1} over {2} minutes", aCurrValue, aSetPoint, aHeatOverTime));
+		logger.log(Level.INFO, "Initiating integrator to {0} watts", ITerm);
 		setPoint = aSetPoint;
 
 	}
