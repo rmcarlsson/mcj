@@ -182,13 +182,13 @@ public  final class StartStopRequest extends
   public static final int START_STOP_FIELD_NUMBER = 1;
   private int startStop_;
   /**
-   * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+   * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
    */
   public int getStartStopValue() {
     return startStop_;
   }
   /**
-   * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+   * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
    */
   public se.trantor.grpcproto.StartStopRequest.StartStop getStartStop() {
     se.trantor.grpcproto.StartStopRequest.StartStop result = se.trantor.grpcproto.StartStopRequest.StartStop.valueOf(startStop_);
@@ -247,7 +247,7 @@ public  final class StartStopRequest extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + START_STOP_FIELD_NUMBER;
     hash = (53 * hash) + startStop_;
     hash = (29 * hash) + unknownFields.hashCode();
@@ -465,13 +465,13 @@ public  final class StartStopRequest extends
 
     private int startStop_ = 0;
     /**
-     * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+     * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
      */
     public int getStartStopValue() {
       return startStop_;
     }
     /**
-     * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+     * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
      */
     public Builder setStartStopValue(int value) {
       startStop_ = value;
@@ -479,14 +479,14 @@ public  final class StartStopRequest extends
       return this;
     }
     /**
-     * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+     * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
      */
     public se.trantor.grpcproto.StartStopRequest.StartStop getStartStop() {
       se.trantor.grpcproto.StartStopRequest.StartStop result = se.trantor.grpcproto.StartStopRequest.StartStop.valueOf(startStop_);
       return result == null ? se.trantor.grpcproto.StartStopRequest.StartStop.UNRECOGNIZED : result;
     }
     /**
-     * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+     * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
      */
     public Builder setStartStop(se.trantor.grpcproto.StartStopRequest.StartStop value) {
       if (value == null) {
@@ -498,7 +498,7 @@ public  final class StartStopRequest extends
       return this;
     }
     /**
-     * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+     * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
      */
     public Builder clearStartStop() {
       

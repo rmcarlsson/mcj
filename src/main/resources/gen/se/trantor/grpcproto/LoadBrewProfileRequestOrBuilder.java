@@ -56,17 +56,17 @@ public interface LoadBrewProfileRequestOrBuilder extends
       int index);
 
   /**
-   * <code>optional int32 boil_time = 3;</code>
+   * <code>int32 boil_time = 3;</code>
    */
   int getBoilTime();
 
   /**
-   * <code>optional double mash_water_volume = 4;</code>
+   * <code>double mash_water_volume = 4;</code>
    */
   double getMashWaterVolume();
 
   /**
-   * <code>optional double grainbill_weight = 5;</code>
+   * <code>double grainbill_weight = 5;</code>
    */
   double getGrainbillWeight();
 }

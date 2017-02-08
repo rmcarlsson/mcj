@@ -8,11 +8,11 @@ public interface StartStopRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+   * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
    */
   int getStartStopValue();
   /**
-   * <code>optional .grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
+   * <code>.grpcproto.StartStopRequest.StartStop start_stop = 1;</code>
    */
   se.trantor.grpcproto.StartStopRequest.StartStop getStartStop();
 }

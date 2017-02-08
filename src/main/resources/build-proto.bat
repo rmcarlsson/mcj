@@ -12,11 +12,11 @@ mkdir gen\se\trantor\grpcproto
 @set TOOLS_PATH=C:\Users\rmcar\Source\Repos\grainsim\packages\Google.Protobuf.Tools.3.0.0\tools\windows_x64
 @set TOOLS_PATH=C:\Users\carltmik\grpc2\examples\csharp\helloworld\packages\Google.Protobuf.3.0.0-beta2\tools
 
-set TOOLS_PATH=C:\Users\rmcar\.m2\repository\com\google\protobuf\protoc\3.0.2\
-set TOOL=protoc-3.0.2-windows-x86_64
+set TOOLS_PATH=C:\Users\rmcar\.m2\repository\com\google\protobuf\protoc\3.2.0-rc.1\
+set TOOL=protoc-3.2.0-rc.1-windows-x86_64.exe
 
-set PLUGIN_PATH=C:\Users\rmcar\.m2\repository\io\grpc\protoc-gen-grpc-java\1.0.1
-set PLUGIN=protoc-gen-grpc-java-1.0.1-windows-x86_64.exe
+set PLUGIN_PATH=C:\Users\rmcar\.m2\repository\io\grpc\protoc-gen-grpc-java\1.0.3
+set PLUGIN=protoc-gen-grpc-java-1.0.3-windows-x86_64.exe
 
 @set PROTOBUF_IMPORT=C:\Users\rmcar\Source\Repos\grainsim\packages\Google.Protobuf.Tools.3.0.0-beta3\tools
 set PROTOBUF_IMPORT=C:\Users\rmcar\Downloads\protobuf-java-3.0.0\protobuf-3.0.0\src

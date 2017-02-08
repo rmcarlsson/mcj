@@ -93,7 +93,7 @@ public class BrewController implements Runnable{
 		int totalTimeRemaining = 0;
 		BrewStatus ret = new BrewStatus();
 
-		Temperature t = TemperatureSingleton.getInstance();
+		TemperatureService t = TemperatureSingleton.getInstance();
 		ret.currentMashTemp = t.GetTemperature();
 		if (state == stateE.BOILING)
 			ret.boilTime = bc.getBoilTime();

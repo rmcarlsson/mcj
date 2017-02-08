@@ -180,13 +180,13 @@ public  final class SuccessReply extends
   public static final int SUCCESS_FIELD_NUMBER = 1;
   private int success_;
   /**
-   * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+   * <code>.grpcproto.SuccessReply.Success success = 1;</code>
    */
   public int getSuccessValue() {
     return success_;
   }
   /**
-   * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+   * <code>.grpcproto.SuccessReply.Success success = 1;</code>
    */
   public se.trantor.grpcproto.SuccessReply.Success getSuccess() {
     se.trantor.grpcproto.SuccessReply.Success result = se.trantor.grpcproto.SuccessReply.Success.valueOf(success_);
@@ -196,7 +196,7 @@ public  final class SuccessReply extends
   public static final int MSG_FIELD_NUMBER = 2;
   private volatile java.lang.Object msg_;
   /**
-   * <code>optional string msg = 2;</code>
+   * <code>string msg = 2;</code>
    */
   public java.lang.String getMsg() {
     java.lang.Object ref = msg_;
@@ -211,7 +211,7 @@ public  final class SuccessReply extends
     }
   }
   /**
-   * <code>optional string msg = 2;</code>
+   * <code>string msg = 2;</code>
    */
   public com.google.protobuf.ByteString
       getMsgBytes() {
@@ -287,7 +287,7 @@ public  final class SuccessReply extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
     hash = (53 * hash) + success_;
     hash = (37 * hash) + MSG_FIELD_NUMBER;
@@ -514,13 +514,13 @@ public  final class SuccessReply extends
 
     private int success_ = 0;
     /**
-     * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+     * <code>.grpcproto.SuccessReply.Success success = 1;</code>
      */
     public int getSuccessValue() {
       return success_;
     }
     /**
-     * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+     * <code>.grpcproto.SuccessReply.Success success = 1;</code>
      */
     public Builder setSuccessValue(int value) {
       success_ = value;
@@ -528,14 +528,14 @@ public  final class SuccessReply extends
       return this;
     }
     /**
-     * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+     * <code>.grpcproto.SuccessReply.Success success = 1;</code>
      */
     public se.trantor.grpcproto.SuccessReply.Success getSuccess() {
       se.trantor.grpcproto.SuccessReply.Success result = se.trantor.grpcproto.SuccessReply.Success.valueOf(success_);
       return result == null ? se.trantor.grpcproto.SuccessReply.Success.UNRECOGNIZED : result;
     }
     /**
-     * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+     * <code>.grpcproto.SuccessReply.Success success = 1;</code>
      */
     public Builder setSuccess(se.trantor.grpcproto.SuccessReply.Success value) {
       if (value == null) {
@@ -547,7 +547,7 @@ public  final class SuccessReply extends
       return this;
     }
     /**
-     * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+     * <code>.grpcproto.SuccessReply.Success success = 1;</code>
      */
     public Builder clearSuccess() {
       
@@ -558,7 +558,7 @@ public  final class SuccessReply extends
 
     private java.lang.Object msg_ = "";
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>string msg = 2;</code>
      */
     public java.lang.String getMsg() {
       java.lang.Object ref = msg_;
@@ -573,7 +573,7 @@ public  final class SuccessReply extends
       }
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>string msg = 2;</code>
      */
     public com.google.protobuf.ByteString
         getMsgBytes() {
@@ -589,7 +589,7 @@ public  final class SuccessReply extends
       }
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>string msg = 2;</code>
      */
     public Builder setMsg(
         java.lang.String value) {
@@ -602,7 +602,7 @@ public  final class SuccessReply extends
       return this;
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>string msg = 2;</code>
      */
     public Builder clearMsg() {
       
@@ -611,7 +611,7 @@ public  final class SuccessReply extends
       return this;
     }
     /**
-     * <code>optional string msg = 2;</code>
+     * <code>string msg = 2;</code>
      */
     public Builder setMsgBytes(
         com.google.protobuf.ByteString value) {

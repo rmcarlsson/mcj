@@ -11,11 +11,11 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
-public class Heater implements HeaterService {
+public class HeaterSim implements HeaterService {
 
 	private int power = 0;
 
-	private static final Logger logger = Logger.getLogger(Heater.class.getName());
+	private static final Logger logger = Logger.getLogger(HeaterSim.class.getName());
 	/* (non-Javadoc)
 	 * @see se.trantor.mcj.HeaterService#SetPower(int)
 	 */
@@ -38,13 +38,6 @@ public class Heater implements HeaterService {
 
 		logger.log(Level.INFO, "Spawning heater");
 		
-		// create gpio controller
-        final GpioController gpio = GpioFactory.getInstance();
-        
-        // provision gpio pin #01 as an output pin and turn on
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "Heater", PinState.LOW);
-        
-		//gpio_write_val (0);
 		try {
 
 			while (true)
@@ -64,21 +57,19 @@ public class Heater implements HeaterService {
 
 				if (on_time > 0)
 				{
-					pin.high();
 					Thread.sleep(on_time);
 					
 				}
 
 				if (off_time > 0) 
 				{
-					pin.low();
 					Thread.sleep(off_time);
 				}
 			}
 		} 
 		catch (InterruptedException e) 
 		{
-			pin.low();
+//
 		}	
 	}
 }

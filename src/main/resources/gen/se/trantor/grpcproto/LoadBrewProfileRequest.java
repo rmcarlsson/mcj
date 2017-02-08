@@ -183,7 +183,7 @@ public  final class LoadBrewProfileRequest extends
   public static final int BOIL_TIME_FIELD_NUMBER = 3;
   private int boilTime_;
   /**
-   * <code>optional int32 boil_time = 3;</code>
+   * <code>int32 boil_time = 3;</code>
    */
   public int getBoilTime() {
     return boilTime_;
@@ -192,7 +192,7 @@ public  final class LoadBrewProfileRequest extends
   public static final int MASH_WATER_VOLUME_FIELD_NUMBER = 4;
   private double mashWaterVolume_;
   /**
-   * <code>optional double mash_water_volume = 4;</code>
+   * <code>double mash_water_volume = 4;</code>
    */
   public double getMashWaterVolume() {
     return mashWaterVolume_;
@@ -201,7 +201,7 @@ public  final class LoadBrewProfileRequest extends
   public static final int GRAINBILL_WEIGHT_FIELD_NUMBER = 5;
   private double grainbillWeight_;
   /**
-   * <code>optional double grainbill_weight = 5;</code>
+   * <code>double grainbill_weight = 5;</code>
    */
   public double getGrainbillWeight() {
     return grainbillWeight_;
@@ -300,7 +300,7 @@ public  final class LoadBrewProfileRequest extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     if (getMashProfileStepsCount() > 0) {
       hash = (37 * hash) + MASH_PROFILE_STEPS_FIELD_NUMBER;
       hash = (53 * hash) + getMashProfileStepsList().hashCode();
@@ -1112,13 +1112,13 @@ public  final class LoadBrewProfileRequest extends
 
     private int boilTime_ ;
     /**
-     * <code>optional int32 boil_time = 3;</code>
+     * <code>int32 boil_time = 3;</code>
      */
     public int getBoilTime() {
       return boilTime_;
     }
     /**
-     * <code>optional int32 boil_time = 3;</code>
+     * <code>int32 boil_time = 3;</code>
      */
     public Builder setBoilTime(int value) {
       
@@ -1127,7 +1127,7 @@ public  final class LoadBrewProfileRequest extends
       return this;
     }
     /**
-     * <code>optional int32 boil_time = 3;</code>
+     * <code>int32 boil_time = 3;</code>
      */
     public Builder clearBoilTime() {
       
@@ -1138,13 +1138,13 @@ public  final class LoadBrewProfileRequest extends
 
     private double mashWaterVolume_ ;
     /**
-     * <code>optional double mash_water_volume = 4;</code>
+     * <code>double mash_water_volume = 4;</code>
      */
     public double getMashWaterVolume() {
       return mashWaterVolume_;
     }
     /**
-     * <code>optional double mash_water_volume = 4;</code>
+     * <code>double mash_water_volume = 4;</code>
      */
     public Builder setMashWaterVolume(double value) {
       
@@ -1153,7 +1153,7 @@ public  final class LoadBrewProfileRequest extends
       return this;
     }
     /**
-     * <code>optional double mash_water_volume = 4;</code>
+     * <code>double mash_water_volume = 4;</code>
      */
     public Builder clearMashWaterVolume() {
       
@@ -1164,13 +1164,13 @@ public  final class LoadBrewProfileRequest extends
 
     private double grainbillWeight_ ;
     /**
-     * <code>optional double grainbill_weight = 5;</code>
+     * <code>double grainbill_weight = 5;</code>
      */
     public double getGrainbillWeight() {
       return grainbillWeight_;
     }
     /**
-     * <code>optional double grainbill_weight = 5;</code>
+     * <code>double grainbill_weight = 5;</code>
      */
     public Builder setGrainbillWeight(double value) {
       
@@ -1179,7 +1179,7 @@ public  final class LoadBrewProfileRequest extends
       return this;
     }
     /**
-     * <code>optional double grainbill_weight = 5;</code>
+     * <code>double grainbill_weight = 5;</code>
      */
     public Builder clearGrainbillWeight() {
       

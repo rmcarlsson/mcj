@@ -120,8 +120,7 @@ public enum BrewStep
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return se.trantor.grpcproto.GrainbrainProto.getDescriptor()
-        .getEnumTypes().get(0);
+    return se.trantor.grpcproto.GrainbrainProto.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final BrewStep[] VALUES = values();

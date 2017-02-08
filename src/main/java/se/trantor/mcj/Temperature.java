@@ -10,19 +10,23 @@ import com.pi4j.component.temperature.impl.TmpDS18B20DeviceType;
 import com.pi4j.io.w1.W1Device;
 import com.pi4j.io.w1.W1Master;
 
-public class Temperature implements Runnable {
+public class Temperature implements TemperatureService {
 
 	double temperature;
-	private Heater heater;
+	private HeaterService heater;
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 	private W1Device device = null;
 
 	public Temperature()
 	{
-		temperature = 50;
+		temperature = 60;
 		heater = HeaterSingleton.getInstance();
 	}
 
+	/* (non-Javadoc)
+	 * @see se.trantor.mcj.TemperatureService#GetTemperature()
+	 */
+	@Override
 	public double GetTemperature()
 	{
 
@@ -37,7 +41,11 @@ public class Temperature implements Runnable {
 		return temperature;
 	}
 
-	public void SetHeater(Heater aHeater) {
+	/* (non-Javadoc)
+	 * @see se.trantor.mcj.TemperatureService#SetHeater(se.trantor.mcj.Heater)
+	 */
+	@Override
+	public void SetHeater(HeaterService aHeater) {
 		heater = aHeater;
 	}
 

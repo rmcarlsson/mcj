@@ -17,7 +17,7 @@ public class MashStepControl implements Runnable {
 	private int stepIx;
 
 	private PidController pidController;
-	private Temperature temperature;
+	private TemperatureService temperature;
 
 
 	private boolean running;
@@ -53,6 +53,7 @@ public class MashStepControl implements Runnable {
 			state = MashControlStateE.STEP_MASHING;
 			logger.log(Level.INFO, MessageFormat.format("Heating done to {0} C. Will stay for {1} minutes.",
 					currMashStep.Temperature, currMashStep.StepTime));
+			stepStartTime = null;
 		}
 	}
 
@@ -95,7 +96,7 @@ public class MashStepControl implements Runnable {
 					// <########## STATE transition STEP_MASHING -> HEATING ##########>
 					state = MashControlStateE.HEATING;
 					
-					stepStartTime = new Date();
+					//stepStartTime = new Date();
 
 					pidController.SetSetPoint(currMashStep.Temperature);
 					logger.log(Level.INFO, "Starting next step. Heating to {0} C", currMashStep.Temperature);
@@ -131,8 +132,8 @@ public class MashStepControl implements Runnable {
 
 			// <########## STATE transition WAIT_FOR_GRAINS -> STEP_MASHING ##########>
 			state = MashControlStateE.STEP_MASHING;
-		
 			
+			stepStartTime = null;			
 		}
 
 	}
@@ -179,6 +180,7 @@ public class MashStepControl implements Runnable {
 			
 			// Transition action
 			pidController.SetSetPoint(currMashStep.Temperature);
+			stepStartTime = null;
 		}
 	}
 	
@@ -200,14 +202,14 @@ public class MashStepControl implements Runnable {
 	public void run() {
 		try {
 
-			Heater heater = HeaterSingleton.getInstance();
+			HeaterService heater = HeaterSingleton.getInstance();
 
 			temperature = TemperatureSingleton.getInstance();
 			running = true;
 
 			while (running && !Thread.currentThread().isInterrupted()) {
 
-				Thread.sleep(Heater.PERIOD);
+				Thread.sleep(HeaterService.PERIOD);
 				this.Exec();
 
 				int controlSignal = pidController.Exec(temperature.GetTemperature());

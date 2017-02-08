@@ -1,6 +1,7 @@
 package se.trantor.mcj;
 
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 
 	public static void main(String[] args) {
+		
 		
 	    final McNgMain server = new McNgMain();
 	    try {

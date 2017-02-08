@@ -39,7 +39,7 @@ public class PidController {
 	public PidController(double aMashWaterVolume, double aGrainbillWeight) {
 		inAuto = false;
 
-		SetOutputLimits(0, Heater.MAX_POWER); // default output limit
+		SetOutputLimits(0, HeaterService.MAX_POWER); // default output limit
 												// corresponds to
 		// the arduino pwm limits
 
@@ -53,6 +53,7 @@ public class PidController {
 		grainbillWeight = aGrainbillWeight;
 		
 		setpointStep = 0;
+		logger.setLevel(Level.ALL);
 	}
 
 	public void SetSetPoint(double aSetPoint) {
@@ -72,7 +73,7 @@ public class PidController {
 		ITerm = dT * (HC_W * mashWaterVolume + HC_G * grainbillWeight);
 
 		// Calculate set point time steps
-		setpointStep = dT * Heater.PERIOD / 1000;
+		setpointStep = dT * HeaterService.PERIOD / 1000;
 
 		logger.log(Level.INFO, MessageFormat.format("New setpoint. Moving from {0} to {1} over {2} minutes", aCurrValue, aSetPoint, aHeatOverTime));
 		logger.log(Level.INFO, "Initiating integrator to {0} watts", ITerm);
@@ -187,7 +188,7 @@ public class PidController {
 	}
 
 	public boolean isControlStable() {
-		return ((Math.abs(lastInput - setPoint) < STABLE_CONTROL_HYST) && (state == stateE.PID_MODE));
+		return ((Math.abs(lastInput - setPoint) < STABLE_CONTROL_HYST));
 	}
 
 }

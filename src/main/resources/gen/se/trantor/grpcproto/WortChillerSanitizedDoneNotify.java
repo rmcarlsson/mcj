@@ -74,7 +74,7 @@ public  final class WortChillerSanitizedDoneNotify extends
   public static final int ID_FIELD_NUMBER = 1;
   private int id_;
   /**
-   * <code>optional int32 id = 1;</code>
+   * <code>int32 id = 1;</code>
    */
   public int getId() {
     return id_;
@@ -133,7 +133,7 @@ public  final class WortChillerSanitizedDoneNotify extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -351,13 +351,13 @@ public  final class WortChillerSanitizedDoneNotify extends
 
     private int id_ ;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     public int getId() {
       return id_;
     }
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     public Builder setId(int value) {
       
@@ -366,7 +366,7 @@ public  final class WortChillerSanitizedDoneNotify extends
       return this;
     }
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     public Builder clearId() {
       

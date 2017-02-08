@@ -42,10 +42,11 @@ public class McNgMain {
 
 	@SuppressWarnings("deprecation")
 	public void start() throws IOException {
-		server = ServerBuilder.forPort(port).addService(new McServerImpl()).build();
-		//		server = ServerBuilder.forPort(port).addService(new McServerImpl()).build().start();
+		server = ServerBuilder.forPort(port).addService(new McServerImpl()).build().start();
+		
+		//server = ServerBuilder.forPort(port).addService(new McServerImpl()).build().start();
 		logger.info("Server started, listening on " + port);
-
+		logger.fine("Server started, listening on " + port);
 		/*		ManagedChannel channel = ManagedChannelBuilder.forAddress("127.0.0.1", port)
 		        .usePlaintext(true)
 		        .build();
@@ -154,7 +155,7 @@ public class McNgMain {
 		@java.lang.Override
 		public void startStopAbort(StartStopRequest request,
 				io.grpc.stub.StreamObserver<SuccessReply> responseObserver) {
-
+logger.info("startStop");
 			se.trantor.grpcproto.SuccessReply.Builder rplb = SuccessReply.newBuilder();
 
 			if(request.getStartStop() == StartStop.START)
@@ -235,6 +236,7 @@ public class McNgMain {
 		@java.lang.Override
 		public void getStatus(com.google.protobuf.Empty request,
 				io.grpc.stub.StreamObserver<se.trantor.grpcproto.BrewStatusReply> responseObserver) {
+			logger.info("getStatus");
 			if(bc != null)
 			{
 				BrewStatus bs = bc.getStatus();

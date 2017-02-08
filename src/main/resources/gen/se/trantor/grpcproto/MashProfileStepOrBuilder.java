@@ -8,17 +8,17 @@ public interface MashProfileStepOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional int32 heat_over_time = 1;</code>
+   * <code>int32 heat_over_time = 1;</code>
    */
   int getHeatOverTime();
 
   /**
-   * <code>optional int32 temperature = 2;</code>
+   * <code>int32 temperature = 2;</code>
    */
   int getTemperature();
 
   /**
-   * <code>optional int32 step_time = 3;</code>
+   * <code>int32 step_time = 3;</code>
    */
   int getStepTime();
 }

@@ -8,11 +8,11 @@ public interface BrewStatusReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+   * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
    */
   int getCurrentBrewStepValue();
   /**
-   * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+   * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
    */
   se.trantor.grpcproto.BrewStep getCurrentBrewStep();
 
@@ -41,12 +41,12 @@ public interface BrewStatusReplyOrBuilder extends
       int index);
 
   /**
-   * <code>optional double mash_temperature = 3;</code>
+   * <code>double mash_temperature = 3;</code>
    */
   double getMashTemperature();
 
   /**
-   * <code>optional double mash_temperature_setpoint = 4;</code>
+   * <code>double mash_temperature_setpoint = 4;</code>
    */
   double getMashTemperatureSetpoint();
 
@@ -75,12 +75,12 @@ public interface BrewStatusReplyOrBuilder extends
       int index);
 
   /**
-   * <code>optional int32 remaining_boil_time = 6;</code>
+   * <code>int32 remaining_boil_time = 6;</code>
    */
   int getRemainingBoilTime();
 
   /**
-   * <code>optional int32 progress = 7;</code>
+   * <code>int32 progress = 7;</code>
    */
   int getProgress();
 }

@@ -126,13 +126,13 @@ public  final class BrewStatusReply extends
   public static final int CURRENT_BREW_STEP_FIELD_NUMBER = 1;
   private int currentBrewStep_;
   /**
-   * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+   * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
    */
   public int getCurrentBrewStepValue() {
     return currentBrewStep_;
   }
   /**
-   * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+   * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
    */
   public se.trantor.grpcproto.BrewStep getCurrentBrewStep() {
     se.trantor.grpcproto.BrewStep result = se.trantor.grpcproto.BrewStep.valueOf(currentBrewStep_);
@@ -177,7 +177,7 @@ public  final class BrewStatusReply extends
   public static final int MASH_TEMPERATURE_FIELD_NUMBER = 3;
   private double mashTemperature_;
   /**
-   * <code>optional double mash_temperature = 3;</code>
+   * <code>double mash_temperature = 3;</code>
    */
   public double getMashTemperature() {
     return mashTemperature_;
@@ -186,7 +186,7 @@ public  final class BrewStatusReply extends
   public static final int MASH_TEMPERATURE_SETPOINT_FIELD_NUMBER = 4;
   private double mashTemperatureSetpoint_;
   /**
-   * <code>optional double mash_temperature_setpoint = 4;</code>
+   * <code>double mash_temperature_setpoint = 4;</code>
    */
   public double getMashTemperatureSetpoint() {
     return mashTemperatureSetpoint_;
@@ -230,7 +230,7 @@ public  final class BrewStatusReply extends
   public static final int REMAINING_BOIL_TIME_FIELD_NUMBER = 6;
   private int remainingBoilTime_;
   /**
-   * <code>optional int32 remaining_boil_time = 6;</code>
+   * <code>int32 remaining_boil_time = 6;</code>
    */
   public int getRemainingBoilTime() {
     return remainingBoilTime_;
@@ -239,7 +239,7 @@ public  final class BrewStatusReply extends
   public static final int PROGRESS_FIELD_NUMBER = 7;
   private int progress_;
   /**
-   * <code>optional int32 progress = 7;</code>
+   * <code>int32 progress = 7;</code>
    */
   public int getProgress() {
     return progress_;
@@ -355,7 +355,7 @@ public  final class BrewStatusReply extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + CURRENT_BREW_STEP_FIELD_NUMBER;
     hash = (53 * hash) + currentBrewStep_;
     if (getRemainingMashStepsCount() > 0) {
@@ -703,13 +703,13 @@ public  final class BrewStatusReply extends
 
     private int currentBrewStep_ = 0;
     /**
-     * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+     * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
      */
     public int getCurrentBrewStepValue() {
       return currentBrewStep_;
     }
     /**
-     * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+     * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
      */
     public Builder setCurrentBrewStepValue(int value) {
       currentBrewStep_ = value;
@@ -717,14 +717,14 @@ public  final class BrewStatusReply extends
       return this;
     }
     /**
-     * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+     * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
      */
     public se.trantor.grpcproto.BrewStep getCurrentBrewStep() {
       se.trantor.grpcproto.BrewStep result = se.trantor.grpcproto.BrewStep.valueOf(currentBrewStep_);
       return result == null ? se.trantor.grpcproto.BrewStep.UNRECOGNIZED : result;
     }
     /**
-     * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+     * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
      */
     public Builder setCurrentBrewStep(se.trantor.grpcproto.BrewStep value) {
       if (value == null) {
@@ -736,7 +736,7 @@ public  final class BrewStatusReply extends
       return this;
     }
     /**
-     * <code>optional .grpcproto.BrewStep current_brew_step = 1;</code>
+     * <code>.grpcproto.BrewStep current_brew_step = 1;</code>
      */
     public Builder clearCurrentBrewStep() {
       
@@ -987,13 +987,13 @@ public  final class BrewStatusReply extends
 
     private double mashTemperature_ ;
     /**
-     * <code>optional double mash_temperature = 3;</code>
+     * <code>double mash_temperature = 3;</code>
      */
     public double getMashTemperature() {
       return mashTemperature_;
     }
     /**
-     * <code>optional double mash_temperature = 3;</code>
+     * <code>double mash_temperature = 3;</code>
      */
     public Builder setMashTemperature(double value) {
       
@@ -1002,7 +1002,7 @@ public  final class BrewStatusReply extends
       return this;
     }
     /**
-     * <code>optional double mash_temperature = 3;</code>
+     * <code>double mash_temperature = 3;</code>
      */
     public Builder clearMashTemperature() {
       
@@ -1013,13 +1013,13 @@ public  final class BrewStatusReply extends
 
     private double mashTemperatureSetpoint_ ;
     /**
-     * <code>optional double mash_temperature_setpoint = 4;</code>
+     * <code>double mash_temperature_setpoint = 4;</code>
      */
     public double getMashTemperatureSetpoint() {
       return mashTemperatureSetpoint_;
     }
     /**
-     * <code>optional double mash_temperature_setpoint = 4;</code>
+     * <code>double mash_temperature_setpoint = 4;</code>
      */
     public Builder setMashTemperatureSetpoint(double value) {
       
@@ -1028,7 +1028,7 @@ public  final class BrewStatusReply extends
       return this;
     }
     /**
-     * <code>optional double mash_temperature_setpoint = 4;</code>
+     * <code>double mash_temperature_setpoint = 4;</code>
      */
     public Builder clearMashTemperatureSetpoint() {
       
@@ -1279,13 +1279,13 @@ public  final class BrewStatusReply extends
 
     private int remainingBoilTime_ ;
     /**
-     * <code>optional int32 remaining_boil_time = 6;</code>
+     * <code>int32 remaining_boil_time = 6;</code>
      */
     public int getRemainingBoilTime() {
       return remainingBoilTime_;
     }
     /**
-     * <code>optional int32 remaining_boil_time = 6;</code>
+     * <code>int32 remaining_boil_time = 6;</code>
      */
     public Builder setRemainingBoilTime(int value) {
       
@@ -1294,7 +1294,7 @@ public  final class BrewStatusReply extends
       return this;
     }
     /**
-     * <code>optional int32 remaining_boil_time = 6;</code>
+     * <code>int32 remaining_boil_time = 6;</code>
      */
     public Builder clearRemainingBoilTime() {
       
@@ -1305,13 +1305,13 @@ public  final class BrewStatusReply extends
 
     private int progress_ ;
     /**
-     * <code>optional int32 progress = 7;</code>
+     * <code>int32 progress = 7;</code>
      */
     public int getProgress() {
       return progress_;
     }
     /**
-     * <code>optional int32 progress = 7;</code>
+     * <code>int32 progress = 7;</code>
      */
     public Builder setProgress(int value) {
       
@@ -1320,7 +1320,7 @@ public  final class BrewStatusReply extends
       return this;
     }
     /**
-     * <code>optional int32 progress = 7;</code>
+     * <code>int32 progress = 7;</code>
      */
     public Builder clearProgress() {
       

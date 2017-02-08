@@ -86,7 +86,7 @@ public  final class MashProfileStep extends
   public static final int HEAT_OVER_TIME_FIELD_NUMBER = 1;
   private int heatOverTime_;
   /**
-   * <code>optional int32 heat_over_time = 1;</code>
+   * <code>int32 heat_over_time = 1;</code>
    */
   public int getHeatOverTime() {
     return heatOverTime_;
@@ -95,7 +95,7 @@ public  final class MashProfileStep extends
   public static final int TEMPERATURE_FIELD_NUMBER = 2;
   private int temperature_;
   /**
-   * <code>optional int32 temperature = 2;</code>
+   * <code>int32 temperature = 2;</code>
    */
   public int getTemperature() {
     return temperature_;
@@ -104,7 +104,7 @@ public  final class MashProfileStep extends
   public static final int STEP_TIME_FIELD_NUMBER = 3;
   private int stepTime_;
   /**
-   * <code>optional int32 step_time = 3;</code>
+   * <code>int32 step_time = 3;</code>
    */
   public int getStepTime() {
     return stepTime_;
@@ -181,7 +181,7 @@ public  final class MashProfileStep extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + HEAT_OVER_TIME_FIELD_NUMBER;
     hash = (53 * hash) + getHeatOverTime();
     hash = (37 * hash) + TEMPERATURE_FIELD_NUMBER;
@@ -415,13 +415,13 @@ public  final class MashProfileStep extends
 
     private int heatOverTime_ ;
     /**
-     * <code>optional int32 heat_over_time = 1;</code>
+     * <code>int32 heat_over_time = 1;</code>
      */
     public int getHeatOverTime() {
       return heatOverTime_;
     }
     /**
-     * <code>optional int32 heat_over_time = 1;</code>
+     * <code>int32 heat_over_time = 1;</code>
      */
     public Builder setHeatOverTime(int value) {
       
@@ -430,7 +430,7 @@ public  final class MashProfileStep extends
       return this;
     }
     /**
-     * <code>optional int32 heat_over_time = 1;</code>
+     * <code>int32 heat_over_time = 1;</code>
      */
     public Builder clearHeatOverTime() {
       
@@ -441,13 +441,13 @@ public  final class MashProfileStep extends
 
     private int temperature_ ;
     /**
-     * <code>optional int32 temperature = 2;</code>
+     * <code>int32 temperature = 2;</code>
      */
     public int getTemperature() {
       return temperature_;
     }
     /**
-     * <code>optional int32 temperature = 2;</code>
+     * <code>int32 temperature = 2;</code>
      */
     public Builder setTemperature(int value) {
       
@@ -456,7 +456,7 @@ public  final class MashProfileStep extends
       return this;
     }
     /**
-     * <code>optional int32 temperature = 2;</code>
+     * <code>int32 temperature = 2;</code>
      */
     public Builder clearTemperature() {
       
@@ -467,13 +467,13 @@ public  final class MashProfileStep extends
 
     private int stepTime_ ;
     /**
-     * <code>optional int32 step_time = 3;</code>
+     * <code>int32 step_time = 3;</code>
      */
     public int getStepTime() {
       return stepTime_;
     }
     /**
-     * <code>optional int32 step_time = 3;</code>
+     * <code>int32 step_time = 3;</code>
      */
     public Builder setStepTime(int value) {
       
@@ -482,7 +482,7 @@ public  final class MashProfileStep extends
       return this;
     }
     /**
-     * <code>optional int32 step_time = 3;</code>
+     * <code>int32 step_time = 3;</code>
      */
     public Builder clearStepTime() {
       

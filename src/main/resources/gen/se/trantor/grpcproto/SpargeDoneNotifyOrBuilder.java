@@ -8,7 +8,7 @@ public interface SpargeDoneNotifyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional int32 id = 1;</code>
+   * <code>int32 id = 1;</code>
    */
   int getId();
 }

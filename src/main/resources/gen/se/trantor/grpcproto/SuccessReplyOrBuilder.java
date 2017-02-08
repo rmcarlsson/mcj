@@ -8,20 +8,20 @@ public interface SuccessReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+   * <code>.grpcproto.SuccessReply.Success success = 1;</code>
    */
   int getSuccessValue();
   /**
-   * <code>optional .grpcproto.SuccessReply.Success success = 1;</code>
+   * <code>.grpcproto.SuccessReply.Success success = 1;</code>
    */
   se.trantor.grpcproto.SuccessReply.Success getSuccess();
 
   /**
-   * <code>optional string msg = 2;</code>
+   * <code>string msg = 2;</code>
    */
   java.lang.String getMsg();
   /**
-   * <code>optional string msg = 2;</code>
+   * <code>string msg = 2;</code>
    */
   com.google.protobuf.ByteString
       getMsgBytes();

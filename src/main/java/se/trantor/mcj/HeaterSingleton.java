@@ -1,12 +1,12 @@
 package se.trantor.mcj;
 
-public class HeaterSingleton {
+public class HeaterSingleton  {
 	
 	private static Thread thrd;
 
-	private static final Heater instance = new Heater();
+	private static final HeaterService instance = new HeaterSim();
 	
-	public static Heater getInstance()
+	public static HeaterService getInstance()
 	{
 		if (thrd == null)
 		{

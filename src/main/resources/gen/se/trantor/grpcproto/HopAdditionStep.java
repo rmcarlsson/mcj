@@ -81,7 +81,7 @@ public  final class HopAdditionStep extends
   public static final int TIME_FIELD_NUMBER = 1;
   private int time_;
   /**
-   * <code>optional int32 time = 1;</code>
+   * <code>int32 time = 1;</code>
    */
   public int getTime() {
     return time_;
@@ -90,7 +90,7 @@ public  final class HopAdditionStep extends
   public static final int NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object name_;
   /**
-   * <code>optional string name = 2;</code>
+   * <code>string name = 2;</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -105,7 +105,7 @@ public  final class HopAdditionStep extends
     }
   }
   /**
-   * <code>optional string name = 2;</code>
+   * <code>string name = 2;</code>
    */
   public com.google.protobuf.ByteString
       getNameBytes() {
@@ -182,7 +182,7 @@ public  final class HopAdditionStep extends
       return memoizedHashCode;
     }
     int hash = 41;
-    hash = (19 * hash) + getDescriptorForType().hashCode();
+    hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TIME_FIELD_NUMBER;
     hash = (53 * hash) + getTime();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -409,13 +409,13 @@ public  final class HopAdditionStep extends
 
     private int time_ ;
     /**
-     * <code>optional int32 time = 1;</code>
+     * <code>int32 time = 1;</code>
      */
     public int getTime() {
       return time_;
     }
     /**
-     * <code>optional int32 time = 1;</code>
+     * <code>int32 time = 1;</code>
      */
     public Builder setTime(int value) {
       
@@ -424,7 +424,7 @@ public  final class HopAdditionStep extends
       return this;
     }
     /**
-     * <code>optional int32 time = 1;</code>
+     * <code>int32 time = 1;</code>
      */
     public Builder clearTime() {
       
@@ -435,7 +435,7 @@ public  final class HopAdditionStep extends
 
     private java.lang.Object name_ = "";
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -450,7 +450,7 @@ public  final class HopAdditionStep extends
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -466,7 +466,7 @@ public  final class HopAdditionStep extends
       }
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public Builder setName(
         java.lang.String value) {
@@ -479,7 +479,7 @@ public  final class HopAdditionStep extends
       return this;
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public Builder clearName() {
       
@@ -488,7 +488,7 @@ public  final class HopAdditionStep extends
       return this;
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {

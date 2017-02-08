@@ -63,12 +63,12 @@ public class BoilController implements Runnable {
 	public void run() {
 		try {
 			
-			Heater heater = HeaterSingleton.getInstance();
-			Temperature temperature = TemperatureSingleton.getInstance();
+			HeaterService heater = HeaterSingleton.getInstance();
+			TemperatureService temperature = TemperatureSingleton.getInstance();
 			temperature.SetHeater(heater);
 
 			logger.log(Level.INFO, "Increasing power to max to reach boil.");
-			heater.SetPower(Heater.MAX_POWER);
+			heater.SetPower(HeaterService.MAX_POWER);
 
 			while (temperature.GetTemperature() < 99)
 				Thread.sleep(TimeUnit.MINUTES.toMillis(1));			
