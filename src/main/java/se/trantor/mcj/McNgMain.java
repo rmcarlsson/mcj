@@ -266,6 +266,7 @@ logger.info("startStop");
 					bsr.setCurrentBrewStep(BrewStep.HEATING);
 					break;
 				case STEP_MASHING:
+				case HEAT_OVER_MASHING:
 					bsr.setCurrentBrewStep(BrewStep.MASHING);
 					break;
 				case MASH_DONE:

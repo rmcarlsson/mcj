@@ -22,7 +22,7 @@ public class Heater implements HeaterService {
 	@Override
 	public void SetPower(int controlSignal) {
 		power = controlSignal;
-		logger.log(Level.FINE, "Set power to {0}", controlSignal);
+		logger.log(Level.INFO, "Set power to {0}", controlSignal);
 
 	}
 
@@ -58,7 +58,7 @@ public class Heater implements HeaterService {
 				else
 					on_time = PERIOD;
 
-				logger.log(Level.FINE, MessageFormat.format("Power is {0}, on time is {1}", power, on_time));
+				logger.log(Level.INFO, MessageFormat.format("Power is {0}, on time is {1}", power, on_time));
 				
 				long off_time = PERIOD - on_time;
 

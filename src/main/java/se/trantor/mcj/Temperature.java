@@ -20,7 +20,6 @@ public class Temperature implements TemperatureService {
 	public Temperature()
 	{
 		temperature = 60;
-		heater = HeaterSingleton.getInstance();
 	}
 
 	/* (non-Javadoc)
@@ -30,14 +29,7 @@ public class Temperature implements TemperatureService {
 	public double GetTemperature()
 	{
 
-		int val = heater.getPower();
-		double diff = (val/20) - temperature;
-
-		temperature += diff/50;
-		if (temperature > 101)
-			temperature = 101;
-
-		logger.log(Level.FINE, "Temperature is {0}", temperature);
+		logger.log(Level.INFO, "Temperature is {0}", temperature);
 		return temperature;
 	}
 
@@ -46,7 +38,7 @@ public class Temperature implements TemperatureService {
 	 */
 	@Override
 	public void SetHeater(HeaterService aHeater) {
-		heater = aHeater;
+
 	}
 
 
@@ -69,9 +61,11 @@ public class Temperature implements TemperatureService {
 		try {
 			while (!Thread.currentThread().isInterrupted())
 			{
-
-				logger.log(Level.INFO, "Temperature is {0}", ((TemperatureSensor) device).getTemperature());
+				temperature =  ((TemperatureSensor) device).getTemperature();
+				
+				logger.log(Level.INFO, "Temperature is {0}", temperature);
 				Thread.sleep(TimeUnit.SECONDS.toMillis(5));
+				
 			}
 		 } catch (InterruptedException ex) {}
 		 

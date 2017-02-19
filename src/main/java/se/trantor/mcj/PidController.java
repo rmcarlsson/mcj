@@ -27,14 +27,15 @@ public class PidController {
 	boolean inAuto;
 	private stateE state;
 	private double setpointStep;
+	private double tempOff;
 
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 
 	private enum stateE {
-		BINARY_MODE, PID_MODE
+		UNSTABLE, STABLE
 	};
 
-	private static final double STABLE_CONTROL_HYST = 2;
+	private static final double STABLE_CONTROL_HYST = 1;
 
 	public PidController(double aMashWaterVolume, double aGrainbillWeight) {
 		inAuto = false;
@@ -47,12 +48,13 @@ public class PidController {
 
 		SetTunings(kp, ki, kd);
 
-		state = stateE.BINARY_MODE;
+		state = stateE.UNSTABLE;
 
 		mashWaterVolume = aMashWaterVolume;
 		grainbillWeight = aGrainbillWeight;
 		
 		setpointStep = 0;
+		tempOff = 0;
 		logger.setLevel(Level.ALL);
 	}
 
@@ -61,6 +63,9 @@ public class PidController {
 		setPoint = aSetPoint;
 		
 		setpointStep = 0;
+		tempOff = 0;
+		state = stateE.UNSTABLE;
+		logger.log(Level.INFO, "Controller changed from STABLE to UNSTABLE");
 	}
 
 	public void SetSetPoint(double aCurrValue, double aSetPoint, int aHeatOverTime) {
@@ -69,16 +74,24 @@ public class PidController {
 		assert aHeatOverTime > 0;
 		
 		// Initiate integrator
-		double dT = (aSetPoint - aCurrValue) / aHeatOverTime * 60;
-		ITerm = dT * (HC_W * mashWaterVolume + HC_G * grainbillWeight);
+		double dT = (aSetPoint - aCurrValue) / (aHeatOverTime * 60);
+		ITerm = dT * (HC_W * mashWaterVolume + HC_G * grainbillWeight) * 1000;
+
+		int k = 6;
+		int m = -230;
+		l_i = ITerm += k * aCurrValue + m;
 
 		// Calculate set point time steps
 		setpointStep = dT * HeaterService.PERIOD / 1000;
 
 		logger.log(Level.INFO, MessageFormat.format("New setpoint. Moving from {0} to {1} over {2} minutes", aCurrValue, aSetPoint, aHeatOverTime));
 		logger.log(Level.INFO, "Initiating integrator to {0} watts", ITerm);
+	
 		setPoint = aSetPoint;
+		tempOff = (aSetPoint - aCurrValue);
 
+		logger.log(Level.INFO, "Controller is now STABLE");
+		state = stateE.STABLE;
 	}
 
 	public double GetError() {
@@ -87,11 +100,17 @@ public class PidController {
 
 	private int ExecPid(double aInput) {
 
-		setPoint += setpointStep;
+		if (tempOff > 0)
+			tempOff -= setpointStep;
+		else
+			tempOff = 0;
+		
+		double _setPoint = setPoint - tempOff;
+		
 
 		/* Compute all the working error variables */
 		double input = aInput;
-		double error = setPoint - input;
+		double error = _setPoint - input;
 
 		ITerm += (ki * error);
 		if (ITerm > outMax)
@@ -119,19 +138,7 @@ public class PidController {
 
 	}
 
-	private int ExecBinaryMode(double aInput) {
-		if ((setPoint - aInput) > STABLE_CONTROL_HYST)
-			return (int) Math.round(outMax);
-		if ((setPoint - aInput) < -STABLE_CONTROL_HYST)
-			return (int) Math.round(outMin);
-		else {
-			logger.log(Level.INFO, "Activating PID controller");
-			resetPid(aInput);
-			state = stateE.PID_MODE;
-			return (int) Math.round(outMin);
-		}
-	}
-
+	
 	private void resetPid(double aInput) {
 
 		int k = 6;
@@ -141,15 +148,52 @@ public class PidController {
 		l_d = 0;
 		lastInput = aInput;
 		l_p = (setPoint - aInput) * kp;
+	
+		state = stateE.UNSTABLE;
+
+		logger.log(Level.INFO, "Reseting PID, integrator set to {0} watts", ITerm);
+		logger.log(Level.INFO, "Controller changed is now UNSTABLE");
 	}
+
+	
+	private int ExecBinaryMode(double aInput) {
+
+		if ((setPoint - aInput) > 0)
+			return (int) Math.round(outMax);
+		else
+			return (int) Math.round(outMin);
+	}
+	
+	int chooseControlalgorithm(double aInput)
+	{
+		int alg = 0 ;
+		
+		if (Math.abs(setPoint - aInput) > STABLE_CONTROL_HYST)
+			alg = 0;
+		else
+			alg = 1;
+		return alg;
+	}
+
 
 	public int Exec(double aInput) {
 
 		int ret = 0;
-		if (Math.abs(setPoint - aInput) > STABLE_CONTROL_HYST)
+		
+		int alg = chooseControlalgorithm(aInput);
+		
+		if (alg == 0)
 			ret = ExecBinaryMode(aInput);
 		else
+		{
+			if(state == stateE.UNSTABLE)
+			{
+				resetPid(aInput);
+				state = stateE.STABLE;
+				logger.log(Level.INFO, "Controller changed from UNSTABLE to STABLE");
+			}
 			ret = ExecPid(aInput);
+		}
 
 		return ret;
 	}
@@ -188,7 +232,7 @@ public class PidController {
 	}
 
 	public boolean isControlStable() {
-		return ((Math.abs(lastInput - setPoint) < STABLE_CONTROL_HYST));
+		return (state == stateE.STABLE);
 	}
 
 }

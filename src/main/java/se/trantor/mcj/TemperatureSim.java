@@ -37,9 +37,12 @@ public class TemperatureSim implements TemperatureService {
 		long deltaTime = now.getTime() - lastSampleTime.getTime();
 		lastSampleTime = now;
 		
+		
 		double deltaTemp = ((deltaTime/1000) * (val-70)) / (11000 * 4.16); // kilograms and milliseconds... 
 		temperature = deltaTemp + temperature;
 
+		
+		
 		if (temperature > 101)
 			temperature = 101;
 

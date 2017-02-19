@@ -70,7 +70,7 @@ public class BoilController implements Runnable {
 			logger.log(Level.INFO, "Increasing power to max to reach boil.");
 			heater.SetPower(HeaterService.MAX_POWER);
 
-			while (temperature.GetTemperature() < 99)
+			while (temperature.GetTemperature() < 98)
 				Thread.sleep(TimeUnit.MINUTES.toMillis(1));			
 
 			logger.log(Level.INFO, "Reached boil, will boil for {0} minutes", boilTime);

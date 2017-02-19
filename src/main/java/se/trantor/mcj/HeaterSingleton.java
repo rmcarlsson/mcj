@@ -4,7 +4,7 @@ public class HeaterSingleton  {
 	
 	private static Thread thrd;
 
-	private static final HeaterService instance = new HeaterSim();
+	private static final HeaterService instance = new Heater();
 	
 	public static HeaterService getInstance()
 	{

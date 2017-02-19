@@ -95,8 +95,6 @@ public class MashStepControl implements Runnable {
 				} else {
 					// <########## STATE transition STEP_MASHING -> HEATING ##########>
 					state = MashControlStateE.HEATING;
-					
-					//stepStartTime = new Date();
 
 					pidController.SetSetPoint(currMashStep.Temperature);
 					logger.log(Level.INFO, "Starting next step. Heating to {0} C", currMashStep.Temperature);
@@ -153,10 +151,12 @@ public class MashStepControl implements Runnable {
 		case HEATING:
 			handle_heating();
 			break;
-		case HEAT_OVER_MASHING:
-			handle_heat_over_mashing();
-			break;
+//		case HEAT_OVER_MASHING:
+//			handle_heat_over_mashing();
+//			break;
 		case STEP_MASHING:
+		case HEAT_OVER_MASHING:
+
 			handle_step_mashing();
 			break;
 		case MASH_DONE:
