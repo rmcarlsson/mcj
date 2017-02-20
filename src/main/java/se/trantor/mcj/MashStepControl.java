@@ -37,6 +37,8 @@ public class MashStepControl implements Runnable {
 		stepIx = 0;
 		mashStepProfile = aMashProfile;
 		pidController  = aPidController;
+		
+		 logger.setLevel(Level.FINE);
 	}
 
 	public void SetGrainsAdded(boolean aGrainAddedIndication) {
@@ -57,6 +59,32 @@ public class MashStepControl implements Runnable {
 		}
 	}
 
+	
+	private void handle_heat_over_mashing() {
+		Date now = new Date();
+
+		if (stepStartTime == null)
+			stepStartTime = new Date();
+
+		long td = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - stepStartTime.getTime());
+		if (td < 0)
+			td = 0;
+
+		// The step in the mashing is done. What next?
+		if (td >= currMashStep.StepTime) {
+
+			// <########## STATE transition HEAT_OVER_MASHING -> STEP_MASHING ##########>
+			state = MashControlStateE.STEP_MASHING;
+			// Transition action
+			logger.log(Level.FINE,
+					"Update setpoint to {0} C for next mash step.", currMashStep.Temperature);
+			
+			// Transition action
+			pidController.SetSetPoint(currMashStep.Temperature);
+			stepStartTime = null;
+		}
+	}
+	
 	private void handle_step_mashing() {
 		Date now = new Date();
 
@@ -151,12 +179,10 @@ public class MashStepControl implements Runnable {
 		case HEATING:
 			handle_heating();
 			break;
-//		case HEAT_OVER_MASHING:
-//			handle_heat_over_mashing();
-//			break;
-		case STEP_MASHING:
 		case HEAT_OVER_MASHING:
-
+			handle_heat_over_mashing();
+			break;
+		case STEP_MASHING:
 			handle_step_mashing();
 			break;
 		case MASH_DONE:
@@ -169,20 +195,7 @@ public class MashStepControl implements Runnable {
 	}
 	
 	
-	
-	private void handle_heat_over_mashing() {
 
-
-		// The step in the mashing is done. What next?
-		if (mashTemp >= currMashStep.Temperature) {
-			// <########## STATE transition HEAT_OVER_MASHING -> STEP_MASHING ##########>
-			state = MashControlStateE.STEP_MASHING;
-			
-			// Transition action
-			pidController.SetSetPoint(currMashStep.Temperature);
-			stepStartTime = null;
-		}
-	}
 	
 	
 

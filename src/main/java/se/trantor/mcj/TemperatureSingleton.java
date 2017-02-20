@@ -2,7 +2,7 @@ package se.trantor.mcj;
 
 public class TemperatureSingleton {
 
-	private static final TemperatureService instance = new Temperature();
+	private static final TemperatureService instance = new TemperatureSim();
 	private static Thread thrd = null;
 	
 	public static TemperatureService getInstance()
