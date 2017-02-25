@@ -14,6 +14,9 @@ public class PidController {
 	private static final double HC_W = 4.189;
 	private static final double HC_G = 1.592;
 
+	private static final double K = 6.7;
+	private static final double M = -273;
+	
 	private double grainbillWeight;
 	private double mashWaterVolume;
 
@@ -28,6 +31,7 @@ public class PidController {
 	private stateE state;
 	private double setpointStep;
 	private double tempOff;
+	private DataLoggerService data_logger;
 
 	private static final Logger logger = Logger.getLogger(McNgMain.class.getName());
 
@@ -56,6 +60,8 @@ public class PidController {
 		setpointStep = 0;
 		tempOff = 0;
 		logger.setLevel(Level.ALL);
+		
+		data_logger = new DataLoggerImpl();
 	}
 
 	public void SetSetPoint(double aSetPoint) {
@@ -75,11 +81,10 @@ public class PidController {
 		
 		// Initiate integrator
 		double dT = (aSetPoint - aCurrValue) / (aHeatOverTime * 60);
-		ITerm = dT * (HC_W * mashWaterVolume + HC_G * grainbillWeight) * 1000;
+		ITerm = dT * (HC_W * mashWaterVolume * 1000 + HC_G * grainbillWeight);
 
-		int k = 6;
-		int m = -230;
-		l_i = ITerm += k * aCurrValue + m;
+
+		l_i = ITerm += K * aCurrValue + M;
 
 		// Calculate set point time steps
 		setpointStep = dT * HeaterService.PERIOD / 1000;
@@ -98,7 +103,7 @@ public class PidController {
 		return l_p;
 	}
 
-	private int ExecPid(double aInput) {
+	public int Exec(double aInput) {
 
 		if (tempOff > 0)
 			tempOff -= setpointStep;
@@ -126,14 +131,24 @@ public class PidController {
 			l_i = ITerm;
 			l_d = (kd * dInput);
 		}
+		
 
-		if (output > outMax)
+		// Handle saturation and binary control
+		if ((output > outMax) || ((_setPoint - aInput) > STABLE_CONTROL_HYST))
 			output = outMax;
-		else if (output < outMin)
+		else if ((output < outMin)|| ((_setPoint - aInput) < -STABLE_CONTROL_HYST))
 			output = outMin;
-
+			
+		
+		if ((Math.abs(_setPoint - aInput) < STABLE_CONTROL_HYST) && (state == stateE.UNSTABLE))
+		{
+			state = stateE.STABLE;
+			logger.log(Level.INFO, "Controller changed from UNSTABLE to STABLE");
+		}
+		
 		lastInput = input;
-
+		
+		data_logger.AddDataSet(aInput, _setPoint, output);
 		return (int) Math.round(output);
 
 	}
@@ -141,9 +156,7 @@ public class PidController {
 	
 	private void resetPid(double aInput) {
 
-		int k = 6;
-		int m = -230;
-		ITerm = l_i = k * aInput + m;
+		ITerm = l_i = K * aInput + M;
 
 		l_d = 0;
 		lastInput = aInput;
@@ -156,47 +169,6 @@ public class PidController {
 	}
 
 	
-	private int ExecBinaryMode(double aInput) {
-
-		if ((setPoint - aInput) > 0)
-			return (int) Math.round(outMax);
-		else
-			return (int) Math.round(outMin);
-	}
-	
-	int chooseControlalgorithm(double aInput)
-	{
-		int alg = 0 ;
-		
-		if (Math.abs(setPoint - aInput) > STABLE_CONTROL_HYST)
-			alg = 0;
-		else
-			alg = 1;
-		return alg;
-	}
-
-
-	public int Exec(double aInput) {
-
-		int ret = 0;
-		
-		int alg = chooseControlalgorithm(aInput);
-		
-		if (alg == 0)
-			ret = ExecBinaryMode(aInput);
-		else
-		{
-			if(state == stateE.UNSTABLE)
-			{
-				resetPid(aInput);
-				state = stateE.STABLE;
-				logger.log(Level.INFO, "Controller changed from UNSTABLE to STABLE");
-			}
-			ret = ExecPid(aInput);
-		}
-
-		return ret;
-	}
 
 	private void SetOutputLimits(double Min, double Max) {
 		if (Min >= Max)
@@ -233,6 +205,12 @@ public class PidController {
 
 	public boolean isControlStable() {
 		return (state == stateE.STABLE);
+	}
+
+	public void DumpLogger(String string) {
+		
+		data_logger.DumpData(string);
+		
 	}
 
 }

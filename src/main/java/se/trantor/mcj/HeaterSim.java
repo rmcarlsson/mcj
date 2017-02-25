@@ -22,7 +22,7 @@ public class HeaterSim implements HeaterService {
 	@Override
 	public void SetPower(int controlSignal) {
 		power = controlSignal;
-		logger.log(Level.FINE, "Set power to {0}", controlSignal);
+		logger.log(Level.INFO, "Set power to {0}", controlSignal);
 
 	}
 
