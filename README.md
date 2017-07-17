@@ -32,10 +32,21 @@ Grainbrain is a simple control system for Grainfather. It has no graphical user 
 
 # User instructions
 
+## Software instruction
+
+### Prerequisites
+The application uses some predefined Google protocol buffer messages, like Empty.proto. These can not be fetched by Maven and must hence be installed manually. So just download Google protocol buffers from github. Next update the PROTOBUF_IMPORT path in build-proto.bat. 
+
+### Building deployment
+
+In Eclipse, make sure, Window->Preferences. Select Java->Installed JRE. Make sure you have a JDK-version of Java here. If not add one. Next, expand Installed JRE's and check the JDK you just selected in the previous step.
+
+Build using Maven build "compile" and "install". 
+
 ## Hardware installation
 
 ### Temperature sensor connections
-Connect GND and 3,3V from Raspberry PI to DS1820. Connect DQ to GPIO4. Connecta 4,7kohm resistor between 3,3V and GPIO4.
+Connect GND and 3,3V from Raspberry PI to DS1820. Connect DQ to GPIO4. Connect a 4,7kohm resistor between 3,3V and GPIO4.
 
 ### Heater switch
 The heater control is realized using a 5 second time base PWM. It is possible to use both a standrad rely or a solid state relay. Both solutions require a driver. To solve this use a ULN2003A driver circuit. I have use a standard Adruino step motor board. These are available in many different versions, for example, http://www.elecrow.com/wiki/index.php?title=ULN2003_Stepper_Motor_Driver.

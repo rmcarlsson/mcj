@@ -64,16 +64,22 @@ public class PidController {
 		data_logger = new DataLoggerImpl();
 	}
 
-	public void SetSetPoint(double aSetPoint) {
+	public void SetSetPoint(double aSetPoint, Boolean isDerivateDisabled) {
 		logger.log(Level.INFO, "New setpoint {0}", aSetPoint);
 		setPoint = aSetPoint;
 		
 		setpointStep = 0;
 		tempOff = 0;
 		state = stateE.UNSTABLE;
+		
+		resetPid(aSetPoint);
+		
+		if (isDerivateDisabled)
+			kd = 0;
+		
 		logger.log(Level.INFO, "Controller changed from STABLE to UNSTABLE");
 	}
-
+	
 	public void SetSetPoint(double aCurrValue, double aSetPoint, int aHeatOverTime) {
 		
 		assert aSetPoint > aCurrValue;
@@ -85,6 +91,8 @@ public class PidController {
 
 
 		l_i = ITerm += K * aCurrValue + M;
+		
+		kd = 0;
 
 		// Calculate set point time steps
 		setpointStep = dT * HeaterService.PERIOD / 1000;
@@ -108,7 +116,11 @@ public class PidController {
 		if (tempOff > 0)
 			tempOff -= setpointStep;
 		else
+		{
+			kd = 41968.58689;
 			tempOff = 0;
+		}
+			
 		
 		double _setPoint = setPoint - tempOff;
 		
@@ -134,10 +146,11 @@ public class PidController {
 		
 
 		// Handle saturation and binary control
-		if ((output > outMax) || ((_setPoint - aInput) > STABLE_CONTROL_HYST))
-			output = outMax;
-		else if ((output < outMin)|| ((_setPoint - aInput) < -STABLE_CONTROL_HYST))
+		if ((output < outMin)|| ((_setPoint - aInput) < 0))
 			output = outMin;
+		else if ((output > outMax) || ((_setPoint - aInput) > STABLE_CONTROL_HYST))
+			output = outMax;
+
 			
 		
 		if ((Math.abs(_setPoint - aInput) < STABLE_CONTROL_HYST) && (state == stateE.UNSTABLE))
@@ -161,6 +174,8 @@ public class PidController {
 		l_d = 0;
 		lastInput = aInput;
 		l_p = (setPoint - aInput) * kp;
+		
+		kd = 41968.58689;
 	
 		state = stateE.UNSTABLE;
 

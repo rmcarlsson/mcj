@@ -106,6 +106,8 @@ public class BrewController implements Runnable{
 			for (int i=0; i < ret.currentMashProfile.size(); i++)
 			{	
 				totalTimeRemaining += ret.currentMashProfile.get(i).StepTime;
+				totalTimeRemaining += ret.currentMashProfile.get(i).HeatOverTime;
+				
 			}
 		}	
 		totalTimeRemaining += ret.boilTime;

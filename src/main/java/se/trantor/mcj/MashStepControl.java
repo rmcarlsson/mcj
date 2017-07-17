@@ -74,7 +74,7 @@ public class MashStepControl implements Runnable {
 			logger.log(Level.FINE, "Update setpoint to {0} C for next mash step.", currMashStep.Temperature);
 
 			// Transition action
-			pidController.SetSetPoint(currMashStep.Temperature);
+			pidController.SetSetPoint(currMashStep.Temperature, false);
 		}
 	}
 
@@ -115,7 +115,7 @@ public class MashStepControl implements Runnable {
 					// ##########>
 					change_state(MashControlStateE.HEATING);
 
-					pidController.SetSetPoint(currMashStep.Temperature);
+					pidController.SetSetPoint(currMashStep.Temperature, false);
 					logger.log(Level.INFO, "Starting next step. Heating to {0} C", currMashStep.Temperature);
 				}
 
@@ -123,7 +123,7 @@ public class MashStepControl implements Runnable {
 				change_state(MashControlStateE.MASH_DONE);
 
 				logger.log(Level.INFO, "Mash done\n");
-				pidController.SetSetPoint(0);
+				pidController.SetSetPoint(0, false);
 			}
 		}
 	}
@@ -131,7 +131,7 @@ public class MashStepControl implements Runnable {
 	private void handle_heating_strike_water() {
 
 		if (pidController.isControlStable()) {
-			pidController.SetSetPoint(currMashStep.Temperature);
+			pidController.SetSetPoint(currMashStep.Temperature, true);
 			logger.log(Level.INFO,
 					"Strike water temperature reached, targeting first mash step at {0} C. Please add grains.",
 					currMashStep.Temperature);
@@ -197,7 +197,7 @@ public class MashStepControl implements Runnable {
 		logger.log(Level.INFO, "Heating to strike water temperature at {0} for the first step",
 				currMashStep.Temperature);
 
-		pidController.SetSetPoint(currMashStep.Temperature);
+		pidController.SetSetPoint(currMashStep.Temperature, false);
 
 		// <########## STATE transition INIT -> HEATING_TO_STRIKE_WATER
 		// ##########>
@@ -228,7 +228,7 @@ public class MashStepControl implements Runnable {
 			running = false;
 		}
 
-		pidController.SetSetPoint(0);
+		pidController.SetSetPoint(0, false);
 		pidController.DumpLogger("mcj_data.log");
 		HeaterSingleton.getInstance().SetPower(0);
 	}
@@ -237,12 +237,26 @@ public class MashStepControl implements Runnable {
 		ArrayList<MashStep> ret = new ArrayList<MashStep>();
 		for (int i = stepIx; i < mashStepProfile.size(); i++) {
 			MashStep s = new MashStep();
+			
+			if (state == MashControlStateE.HEAT_OVER_MASHING) {
+				int sTime = currMashStep.HeatOverTime; 
+			}
+			
+				
 			s.Temperature = mashStepProfile.get(i).Temperature;
 			s.StepTime = mashStepProfile.get(i).StepTime;
+			s.HeatOverTime = mashStepProfile.get(i).HeatOverTime;
 			if ((i == stepIx) && (stepStartTime != null)) {
 				Date now = new Date();
 				long td = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - stepStartTime.getTime());
-				s.StepTime -= td;
+				if (state == MashControlStateE.HEAT_OVER_MASHING) {
+					s.HeatOverTime -= td;
+				}
+				else
+				{
+					s.HeatOverTime = 0;
+					s.StepTime -= td;
+				}
 			}
 			ret.add(s);
 		}
